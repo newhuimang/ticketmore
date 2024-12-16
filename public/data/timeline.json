@@ -1,0 +1,118 @@
+[
+  {
+    "id": 1,
+    "openDate": "2024.09.24",
+    "time": {
+      "1": { "events": [] },
+      "2": {
+        "events": [
+          {
+            "id": "a4b7c8d3ef",
+            "image": "/assets/dummy_06.png",
+            "name": "THE GREATEST : 불후의명곡 정동하X알리",
+            "startDate": "2024.09.21",
+            "endDate": "",
+            "alarm": false
+          },
+          {
+            "id": "f5g9h1j3kl",
+            "image": "/assets/dummy_03.png",
+            "name": "뮤지컬 <시카고>",
+            "startDate": "2024.09.21",
+            "endDate": "2024.09.22",
+            "alarm": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 2,
+    "openDate": "2024.09.23",
+    "time": {
+      "1": {
+        "events": [
+          {
+            "id": "9xy1z5tq3r",
+            "image": "/assets/dummy_07.png",
+            "name": "스탠드 업 코미디 뮤지컬 <방구석 뮤지컬>",
+            "startDate": "2024.09.21",
+            "endDate": "2024.09.22",
+            "alarm": false
+          }
+        ]
+      },
+      "2": {
+        "events": [
+          {
+            "id": "q2w4e6r8ty",
+            "image": "/assets/dummy_08.png",
+            "name": "이승환 35주년 콘서트 <HEAVEN>",
+            "startDate": "2024.09.21",
+            "endDate": "2024.09.22",
+            "alarm": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 3,
+    "openDate": "2024.09.19",
+    "time": {
+      "1": { "events": [] },
+      "2": {
+        "events": [
+          {
+            "id": "f5g9h1j3kl",
+            "image": "/assets/dummy_03.png",
+            "name": "뮤지컬 <시카고>",
+            "startDate": "2024.09.21",
+            "endDate": "2024.09.22",
+            "alarm": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 4,
+    "openDate": "2024.09.24",
+    "time": {
+      "1": { "events": [] },
+      "2": {
+        "events": [
+          {
+            "id": "a4b7ppd3ef",
+            "image": "/assets/dummy_06.png",
+            "time": 2,
+            "name": "THE GREATEST : 불후의명곡 정동하X알리",
+            "startDate": "2024.09.21",
+            "endDate": "",
+            "alarm": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 5,
+    "openDate": "2024.09.24",
+    "time": {
+      "1": { "events": [] },
+      "2": {
+        "events": [
+          {
+            "id": "a4b7c8d23f",
+            "image": "/assets/dummy_06.png",
+            "time": 2,
+            "name": "THE GREATEST : 불후의명곡 정동하X알리",
+            "startDate": "2024.09.21",
+            "endDate": "",
+            "alarm": false
+          }
+        ]
+      }
+    }
+  }
+]

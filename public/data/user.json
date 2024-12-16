@@ -1,0 +1,122 @@
+{
+  "id": "user",
+  "points": {
+    "totalCount": 98,
+    "lastUpdate": "2024-09-11",
+    "history": [
+      {
+        "rewardSource": "<9월>매일 매일 출석 이벤트!",
+        "update": "2024-09-11",
+        "balance": 98,
+        "getReward": 3,
+        "useReward": 0
+      },
+      {
+        "rewardSource": "<9월>매일 매일 출석 이벤트!",
+        "update": "2024-09-10",
+        "balance": 95,
+        "getReward": 2,
+        "useReward": 0
+      },
+      {
+        "rewardSource": "<9월>매일 매일 출석 이벤트!",
+        "update": "2024-09-09",
+        "balance": 93,
+        "getReward": 1,
+        "useReward": 0
+      },
+      {
+        "rewardSource": "<9월>매일 매일 출석 이벤트!",
+        "update": "2024-09-05",
+        "balance": 92,
+        "getReward": 2,
+        "useReward": 0
+      },
+      {
+        "rewardSource": "<9월>매일 매일 출석 이벤트!",
+        "update": "2024-09-04",
+        "balance": 90,
+        "getReward": 1,
+        "useReward": 0
+      },
+      {
+        "usePoint": "2024년 7월 17일 삼성 라이온즈 KIA 타이거즈",
+        "update": "2024-07-17",
+        "balance": 90,
+        "getReward": 0,
+        "useReward": 3000
+      }
+    ]
+  },
+  "coupons": {
+    "totalCount": 0,
+    "list": {
+      "availed": [],
+      "used": [
+        {
+          "id": "C00231120",
+          "code": "BLKFRIDAY10",
+          "expiration": "2024-05-12",
+          "useDate": null,
+          "isActive": false
+        }
+      ]
+    }
+  },
+  "gifts": {
+    "totalCount": 1,
+    "list": {
+      "availed": [],
+      "used": [
+        {
+          "id": "V00241115",
+          "code": "A3gH7r2L9kT1pQ8X",
+          "expiration": "2025-03-21",
+          "useDate": null,
+          "isActive": false
+        }
+      ]
+    }
+  },
+  "bookings": [
+    {
+      "id": "B00240902",
+      "seat_number": "A10",
+      "booking_date": "2024-09-02",
+      "events": {
+        "id": 1,
+        "name": "뮤지컬<시카고>",
+        "organizer": "-",
+        "image": "/assets/dummy_03.png",
+        "category": "뮤지컬",
+        "event": {
+          "startDate": "2024.10.04",
+          "endDate": "9999.12.31",
+          "venue": "전국 공연장 확인",
+          "ageLimit": "14세 이상"
+        },
+        "status": {
+          "open": true,
+          "early": false,
+          "soldOut": false
+        }
+      }
+    }
+  ],
+  "payments": [
+    {
+      "type": "CARD",
+      "cardType": "CREDIT",
+      "brand": "master",
+      "number": "1234-****-****-**12",
+      "expiration": "28/08",
+      "holder": "차*미"
+    },
+    {
+      "type": "ACCOUNT",
+      "bank": "신한은행",
+      "number": "110-***-****19",
+      "holder": "차*미"
+    }
+  ]
+}

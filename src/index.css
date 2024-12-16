@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "Freesentation";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  font-family: "Freesentation";
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: default;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #4f4f4f;
+  line-height: 1.4;
+}
+
+button {
+  padding: 0;
+  outline: none;
+}
+
+.swiper-container::-webkit-scrollbar {
+  display: none;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  top: unset;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
+  z-index: 100000;
+  background: #fff;
+  border-radius: 1000px;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 16px;
+  color: #4f4f4f;
+}

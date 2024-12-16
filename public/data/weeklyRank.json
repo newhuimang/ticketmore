@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "서울숲재즈페스티벌 2024",
+    "organizer": "-",
+    "image": "/assets/dummy_04.png",
+    "category": "뮤직페스티벌",
+    "event": {
+      "startDate": "2024.10.12",
+      "endDate": "2024.10.13",
+      "venue": "서울숲",
+      "ageLimit": "전체관람가"
+    },
+    "status": {
+      "open": true,
+      "early": true,
+      "soldOut": false
+    }
+  },
+  {
+    "id": 2,
+    "name": "2024 IU THE WINNING",
+    "organizer": "아이유",
+    "image": "/assets/dummy_05.png",
+    "category": "콘서트",
+    "event": {
+      "startDate": "2024.09.21",
+      "endDate": "2024.09.22",
+      "venue": "서울월드컵경기장(상암)",
+      "ageLimit": "미취학아동 입장불가"
+    },
+    "status": {
+      "open": false,
+      "early": false,
+      "soldOut": true
+    }
+  },
+  {
+    "id": 3,
+    "name": "<판타스틱 올드 패션드>",
+    "organizer": "잔나비",
+    "image": "/assets/dummy_00.png",
+    "category": "콘서트",
+    "event": {
+      "startDate": "2024.08.31",
+      "endDate": "2024.09.08",
+      "venue": "KT&G 상상마당 라이브홀",
+      "ageLimit": "7세 이상"
+    },
+    "status": {
+      "open": true,
+      "early": false,
+      "soldOut": false
+    }
+  },
+  {
+    "id": 4,
+    "name": "국립극단<햄릿>",
+    "organizer": "국립극단",
+    "image": "/assets/dummy_01.png",
+    "category": "연극",
+    "event": {
+      "startDate": "2024.11.16",
+      "endDate": "9999.12.31",
+      "venue": "KT&G 상상마당 라이브홀",
+      "ageLimit": "7세 이상"
+    },
+    "status": {
+      "open": false,
+      "early": false,
+      "soldOut": false
+    }
+  },
+  {
+    "id": 5,
+    "name": "르 스페이스 - Le Space INPIRE",
+    "organizer": "-",
+    "image": "/assets/dummy_02.png",
+    "category": "전시 행사",
+    "event": {
+      "startDate": "2024.04.18",
+      "endDate": "2024.10.31",
+      "venue": "인스파이어 인터그레이티드 리조트",
+      "ageLimit": "전체관람가"
+    },
+    "status": {
+      "open": true,
+      "early": false,
+      "soldOut": false
+    }
+  }
+]
