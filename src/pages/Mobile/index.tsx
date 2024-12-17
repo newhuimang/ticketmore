@@ -22,7 +22,7 @@ export default function MobileMainTab() {
     {
       component: <MobileCategory />,
       menu: {
-        icon: <GridFill size={16} className="fill-inherit" />,
+        icon: <GridFill size={20} className="fill-inherit" />,
         label: "카테고리",
       },
       values: "category",
@@ -30,7 +30,7 @@ export default function MobileMainTab() {
     {
       component: <MobileIntro />,
       menu: {
-        icon: <HouseFill size={16} className="fill-inherit" />,
+        icon: <HouseFill size={20} className="fill-inherit" />,
         label: "홈",
       },
       values: "home",
@@ -38,7 +38,7 @@ export default function MobileMainTab() {
     {
       component: <MobileSearch />,
       menu: {
-        icon: <Search size={16} className="fill-inherit" />,
+        icon: <Search size={20} className="fill-inherit" />,
         label: "검색",
       },
       values: "search",
@@ -46,7 +46,7 @@ export default function MobileMainTab() {
     {
       component: <MobileMy />,
       menu: {
-        icon: <PersonFill size={16} className="fill-inherit" />,
+        icon: <PersonFill size={20} className="fill-inherit" />,
         label: "마이",
       },
       values: "my",
@@ -62,12 +62,12 @@ export default function MobileMainTab() {
       ))}
 
       <div className="fixed z-10 w-full bottom-0 translate-y-[-16px] flex justify-center left-0">
-        <ul className="w-[calc(100vw-18px)] max-w-[380px] bg-white rounded-full px-[32px] py-[16px] flex justify-between shadow-bottomNav box-border border border-primary-100">
+        <ul className="w-[calc(100vw-18px)] max-w-[380px] bg-white rounded-full px-[24px] py-[12px] flex justify-between shadow-bottomNav box-border border border-primary-100">
           {navItems.map((items, i) => (
             <li
               key={i}
               onClick={() => setIsActive(items.values)}
-              className={`flex items-center h-[32px] ${isActive === items.values ? "bg-base-A px-[16px] justify-between min-w-[80px] gap-x-[8px] rounded-full" : "justify-center"}`}
+              className={`flex items-center h-[40px] ${isActive === items.values ? "bg-base-A px-[16px] justify-between min-w-[80px] gap-x-[8px] rounded-full" : "justify-center"}`}
             >
               <div
                 className={`flex items-center justify-center ${isActive === items.values ? "fill-primary" : "fill-dark-300"}`}

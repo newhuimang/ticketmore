@@ -57,7 +57,7 @@ export default function MobileCategory() {
     <>
       <MobileNavBar title="카테고리" />
 
-      <Flex width={"100%"} direction="column" className="mt-[52px]">
+      <Flex width={"100%"} direction="column" className="mt-[52px] bg-white">
         <Flex width={"100%"}>
           <ul
             className={`w-[80px] flex flex-col pt-[60px] min-w-[80px] box-border border-r border-t border-primary-100 h-[calc(100vh-40px)]`}
