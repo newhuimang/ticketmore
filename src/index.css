@@ -1,63 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@font-face {
-  font-family: "Freesentation-4Regular";
-  src:
-    url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2")
-      format("woff2"),
-    url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff")
-      format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: "Freesentation-7Bold";
-  src:
-    url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2")
-      format("woff2"),
-    url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff")
-      format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
+@layer base {
+  @font-face {
+    font-family: "Freesentation-4Regular";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src:
+      url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2")
+        format("woff2"),
+      url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff")
+        format("woff");
+  }
 
-@font-face {
-  font-family: "Freesentation-9Black";
-  src:
-    url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
-      format("woff2"),
-    url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff")
-      format("woff");
-  font-weight: 900;
-  font-style: normal;
-}
+  @font-face {
+    font-family: "Freesentation-9Black";
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src:
+      url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+        format("woff2"),
+      url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff")
+        format("woff");
+  }
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: default;
+    font-family: "Freesentation-9Bold", "Freesentation-4Regular";
+  }
+  * {
+    box-sizing: border-box;
+  }
 
-:root {
-  font-family: "Freesentation-4Regular", "Freesentation-7Bold",
-    "Freesentation-9Black", "system-ui";
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    color: #4f4f4f;
+    line-height: 1.4;
+  }
+  .text-h1R,
+  .text-h2R,
+  .text-h3R,
+  .text-str1Rt,
+  .text-str1R,
+  .text-str2Rt,
+  .text-str2R,
+  .text-p1Rt,
+  .text-p1R,
+  .text-p2Rt,
+  .text-p2R,
+  .text-span1Rt,
+  .text-span1R,
+  .text-span2Rt,
+  .text-span2R,
+  .text-divRt,
+  .text-divR {
+    font-family: "Freesentation-4Regular", "Arial", "sans-serif";
+    font-weight: 400;
+  }
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: default;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  color: #4f4f4f;
-  line-height: 1.4;
+  .text-h1B,
+  .text-h2B,
+  .text-h3B,
+  .text-str1Bt,
+  .text-str1B,
+  .text-str2Bt,
+  .text-str2B,
+  .text-p1B,
+  .text-p2B,
+  .text-span1B,
+  .text-span2B,
+  .text-divB {
+    font-family: "Freesentation-9Black", "Arial", "sans-serif";
+    font-weight: 900;
+  }
 }
 
 button {

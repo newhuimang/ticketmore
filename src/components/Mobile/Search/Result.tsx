@@ -36,7 +36,12 @@ export default function MobileSearchResult() {
 
   if (loading) {
     return (
-      <Flex direction="column" items="center" justify="center" className="h-[180px]">
+      <Flex
+        direction="column"
+        items="center"
+        justify="center"
+        className="h-[180px]"
+      >
         <ThreeDots size={20} className="fill-primary-300" />
         <div className="text-p2B text-primary-300">Loading</div>
       </Flex>
@@ -62,7 +67,12 @@ export default function MobileSearchResult() {
     <>
       <MobileHeader />
 
-      <Flex width={"100%"} direction="column" gap={{ row: 16 }} className="px-[12px] pt-[56px]">
+      <Flex
+        width={"100%"}
+        direction="column"
+        gap={{ row: 16 }}
+        className="px-[12px] pt-[56px]"
+      >
         <MobileSearchbar />
 
         {filteredData.length === 0 ? (

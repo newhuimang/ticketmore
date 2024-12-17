@@ -30,7 +30,12 @@ export default function MobileWeeklyRank() {
 
   if (loading) {
     return (
-      <Flex direction="column" items="center" justify="center" className="h-[180px]">
+      <Flex
+        direction="column"
+        items="center"
+        justify="center"
+        className="h-[180px]"
+      >
         <ThreeDots size={20} className="fill-primary-300" />
         <div className="text-p2B text-primary-300">Loading</div>
       </Flex>
@@ -84,9 +89,13 @@ export default function MobileWeeklyRank() {
                   </Flex>
 
                   <Flex items="center" gap={{ column: 8 }}>
-                    <span className="text-span2R text-dark-300">{item.category}</span>
+                    <span className="text-span2R text-dark-300">
+                      {item.category}
+                    </span>
                     <Divider type="vertical" height={8} />
-                    <span className="text-span2R text-dark-300">{item.event.ageLimit}</span>
+                    <span className="text-span2R text-dark-300">
+                      {item.event.ageLimit}
+                    </span>
                   </Flex>
                 </Flex>
               </Flex>

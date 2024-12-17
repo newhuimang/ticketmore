@@ -16,8 +16,13 @@ interface Container {
 export default function MobileMyContainer({ list, label }: Container) {
   const { openOverlay } = useOverlay();
   return (
-    <Flex width={"100%"} direction="column" gap={{ row: 8 }} className="px-[12px]">
-      <p className="text-p2B text-dark-950 px-[4px]">{label}</p>
+    <Flex
+      width={"100%"}
+      direction="column"
+      gap={{ row: 8 }}
+      className="px-[12px]"
+    >
+      <p className="text-p2B text-dark-800 px-[4px]">{label}</p>
       <Flex
         width={"100%"}
         direction="column"

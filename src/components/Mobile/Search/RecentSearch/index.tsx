@@ -5,11 +5,17 @@ import { XLg } from "react-bootstrap-icons";
 
 export default function MobileRecentSearch() {
   const { alert } = useFeedback();
-  const recent = ["기아 타이거즈", "2024 인천 워터밤", "서울제즈 페스티벌", "산리오", "메가필드"];
+  const recent = [
+    "기아 타이거즈",
+    "2024 인천 워터밤",
+    "서울제즈 페스티벌",
+    "산리오",
+    "메가필드",
+  ];
   return (
     <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
       <Flex width={"100%"} justify="between" items="end" className="px-[4px]">
-        <p className="text-p2B text-dark-950">최근 검색어</p>
+        <p className="text-p2B text-primary-900">최근 검색어</p>
         <Button
           label={"전체삭제"}
           variant="text"

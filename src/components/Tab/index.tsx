@@ -22,7 +22,12 @@ function DesktopTab({ items, onClick }: TabProps) {
   return (
     <Flex direction="column" gap={{ row: 16 }}>
       <Flex items="center" justify="between">
-        <Flex width="w-fit" items="center" gap={{ column: 24 }} className="px-[16px]">
+        <Flex
+          width="w-fit"
+          items="center"
+          gap={{ column: 24 }}
+          className="px-[16px]"
+        >
           {items.map((item, index) => (
             <button
               key={index}

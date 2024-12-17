@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,css}", "./public/index.html"],
   theme: {
     screens: {
       sm: { min: "320px", max: "767px" },
@@ -9,6 +9,49 @@ export default {
       xl: { min: "1281px" },
     },
     extend: {
+      fontSize: {
+        h1B: ["32px"],
+        h1R: ["32px"],
+        h2B: ["28px"],
+        h2R: ["28px"],
+        h3B: ["24px"],
+        h3R: ["24px"],
+
+        str1Bt: ["22px", { lineHeight: 1 }],
+        str1Rt: ["22px", { lineHeight: 1 }],
+        str1B: ["22px"],
+        str1R: ["22px"],
+
+        str2Bt: ["20px", { lineHeight: 1 }],
+        str2Rt: ["20px", { lineHeight: 1 }],
+        str2B: ["20px"],
+        str2R: ["20px"],
+
+        p1Bt: ["16px", { lineHeight: 1 }],
+        p1Rt: ["16px", { lineHeight: 1 }],
+        p1B: ["16px"],
+        p1R: ["16px"],
+
+        p2B: ["14px", { lineHeight: 1 }],
+        p2Rt: ["14px", { lineHeight: 1 }],
+        p2B: ["14px"],
+        p2R: ["14px"],
+
+        span1Bt: ["12px", { lineHeight: 1 }],
+        span1Rt: ["12px", { lineHeight: 1 }],
+        span1B: ["12px"],
+        span1R: ["12px"],
+
+        span2Bt: ["10px", { lineHeight: 1 }],
+        span2Rt: ["10px", { lineHeight: 1 }],
+        span2B: ["10px"],
+        span2R: ["10px"],
+
+        divBt: ["8px", { lineHeight: 1 }],
+        divRt: ["8px", { lineHeight: 1 }],
+        divB: ["8px"],
+        divR: ["8px"],
+      },
       colors: {
         base: {
           A: "#F7F9FB",
@@ -43,49 +86,6 @@ export default {
           800: "#303266",
           900: "#181933",
         },
-      },
-      fontSize: {
-        h1B: ["32px", { fontWeight: "900", color: "262626" }],
-        h1R: ["32px", { fontWeight: "400", color: "262626" }],
-        h2B: ["28px", { fontWeight: "900", color: "262626" }],
-        h2R: ["28px", { fontWeight: "400", color: "262626" }],
-        h3B: ["24px", { fontWeight: "900", color: "262626" }],
-        h3R: ["24px", { fontWeight: "400", color: "262626" }],
-
-        str1Bt: ["22px", { lineHeight: 1, fontWeight: "900" }],
-        str1Rt: ["22px", { lineHeight: 1, fontWeight: "400" }],
-        str1B: ["22px", { fontWeight: "900" }],
-        str1R: ["22px", { fontWeight: "400" }],
-
-        str2Bt: ["20px", { lineHeight: 1, fontWeight: "900" }],
-        str2Rt: ["20px", { lineHeight: 1, fontWeight: "400" }],
-        str2B: ["20px", { fontWeight: "900" }],
-        str2R: ["20px", { fontWeight: "400" }],
-
-        p1Bt: ["16px", { lineHeight: 1, fontWeight: "900" }],
-        p1Rt: ["16px", { lineHeight: 1, fontWeight: "400" }],
-        p1B: ["16px", { fontWeight: "900" }],
-        p1R: ["16px", { fontWeight: "400" }],
-
-        p2Bt: ["14px", { lineHeight: 1, fontWeight: "900" }],
-        p2Rt: ["14px", { lineHeight: 1, fontWeight: "400" }],
-        p2B: ["14px", { fontWeight: "900" }],
-        p2R: ["14px", { fontWeight: "400" }],
-
-        span1Bt: ["12px", { lineHeight: 1, fontWeight: "900" }],
-        span1Rt: ["12px", { lineHeight: 1, fontWeight: "400" }],
-        span1B: ["12px", { fontWeight: "900" }],
-        span1R: ["12px", { fontWeight: "400" }],
-
-        span2Bt: ["10px", { lineHeight: 1, fontWeight: "900" }],
-        span2Rt: ["10px", { lineHeight: 1, fontWeight: "400" }],
-        span2B: ["10px", { fontWeight: "900" }],
-        span2R: ["10px", { fontWeight: "400" }],
-
-        divBt: ["8px", { lineHeight: 1, fontWeight: "900" }],
-        divRt: ["8px", { lineHeight: 1, fontWeight: "400" }],
-        divB: ["8px", { fontWeight: "900" }],
-        divR: ["8px", { fontWeight: "400" }],
       },
       boxShadow: {
         /* <offset-x> | <offset-y> | <blur-radius> | <color> */

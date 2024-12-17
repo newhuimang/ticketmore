@@ -13,7 +13,7 @@ export const FontStyles = {
   p1Rt: "text-p1Rt",
   p1B: "text-p1B",
   p1R: "text-p1R",
-  p2Bt: "text-p2Bt",
+  p2Bt: "text-p2B",
   p2Rt: "text-p2Rt",
   p2B: "text-p2B",
   p2R: "text-p2R",

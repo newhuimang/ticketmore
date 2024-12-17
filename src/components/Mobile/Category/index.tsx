@@ -103,7 +103,11 @@ export default function MobileCategory() {
                 </Flex>
               ))}
 
-            <Flex width={"100%"} gap={{ row: 24 }} className="pl-[50px] pt-[16px] pr-[12px]">
+            <Flex
+              width={"100%"}
+              gap={{ row: 24 }}
+              className="pl-[50px] pt-[16px] pr-[12px]"
+            >
               {categoryList
                 .filter((category) => category.label === isActive)
                 .map((category, i) => (

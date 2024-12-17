@@ -18,7 +18,11 @@ export default function MyHistory({
   const [coupons, setCoupons] = useState<any[]>([]);
   const { openOverlay } = useOverlay();
   const title =
-    type === "point" ? "포인트 상세 내역" : type === "coupon" ? "나의 쿠폰" : "나의 구매권";
+    type === "point"
+      ? "포인트 상세 내역"
+      : type === "coupon"
+        ? "나의 쿠폰"
+        : "나의 구매권";
 
   useEffect(() => {
     if (type === "coupon" && data && data.list && data.list.availed) {
@@ -34,32 +38,49 @@ export default function MyHistory({
         if (data && data.history && Array.isArray(data.history)) {
           return (
             <>
-              <Flex width={"100%"} direction="column" gap={{ row: 16 }} className="h-[100%]">
+              <Flex
+                width={"100%"}
+                direction="column"
+                gap={{ row: 16 }}
+                className="h-[100%]"
+              >
                 {/* 이벤트 포인트 */}
 
-                {data.history.map((historyItem: Points["history"][number], index: number) => (
-                  <>
-                    <Flex key={index} width={"100%"} direction="column" gap={{ row: 8 }}>
-                      <p className="text-span1R text-dark-300">{historyItem.update}</p>
-                      <Flex width={"100%"} justify="between">
-                        <p className="text-p2R">
-                          {historyItem.rewardSource
-                            ? historyItem.rewardSource
-                            : historyItem.usePoint}
+                {data.history.map(
+                  (historyItem: Points["history"][number], index: number) => (
+                    <>
+                      <Flex
+                        key={index}
+                        width={"100%"}
+                        direction="column"
+                        gap={{ row: 8 }}
+                      >
+                        <p className="text-span1R text-dark-300">
+                          {historyItem.update}
                         </p>
-                        <p
-                          className={`text-p2B ${historyItem.getReward !== 0 ? "text-primary" : "text-state-R"}`}
-                        >
-                          {historyItem.getReward !== 0
-                            ? `+ ` + historyItem.getReward
-                            : `- ` + formatNumberWithComma(historyItem.useReward)}{" "}
-                          p
-                        </p>
+                        <Flex width={"100%"} justify="between">
+                          <p className="text-p2R">
+                            {historyItem.rewardSource
+                              ? historyItem.rewardSource
+                              : historyItem.usePoint}
+                          </p>
+                          <p
+                            className={`text-p2B ${historyItem.getReward !== 0 ? "text-primary" : "text-state-R"}`}
+                          >
+                            {historyItem.getReward !== 0
+                              ? `+ ` + historyItem.getReward
+                              : `- ` +
+                                formatNumberWithComma(
+                                  historyItem.useReward
+                                )}{" "}
+                            p
+                          </p>
+                        </Flex>
                       </Flex>
-                    </Flex>
-                    {index < data.history.length - 1 && <Divider />}
-                  </>
-                ))}
+                      {index < data.history.length - 1 && <Divider />}
+                    </>
+                  )
+                )}
               </Flex>
 
               <p className="text-divR text-dark-300 ml-auto">
@@ -84,7 +105,9 @@ export default function MyHistory({
                     data.list.availed && data.list.availed.length > 0 ? (
                       data.list.availed
                         .filter(
-                          (couponList: UserVouchersList["list"]["availed"][number]) =>
+                          (
+                            couponList: UserVouchersList["list"]["availed"][number]
+                          ) =>
                             couponList.useDate === null && couponList.isActive
                         )
                         .map(
@@ -130,11 +153,15 @@ export default function MyHistory({
                     data.list.used && data.list.used.length > 0 ? (
                       data.list.used
                         .filter(
-                          (couponUseList: UserVouchersList["list"]["used"][number]) =>
-                            couponUseList.isActive === false
+                          (
+                            couponUseList: UserVouchersList["list"]["used"][number]
+                          ) => couponUseList.isActive === false
                         )
                         .map(
-                          (couponUseList: UserVouchersList["list"]["used"][number], i: number) => {
+                          (
+                            couponUseList: UserVouchersList["list"]["used"][number],
+                            i: number
+                          ) => {
                             return (
                               <>
                                 <Flex
@@ -144,9 +171,13 @@ export default function MyHistory({
                                   gap={{ row: 8 }}
                                   className="border border-dark-100 bg-white rounded-[12px] shadow-key py-[8px] px-[12px]"
                                 >
-                                  <p className="text-p2R text-dark-300">{couponUseList.code}</p>
+                                  <p className="text-p2R text-dark-300">
+                                    {couponUseList.code}
+                                  </p>
                                   <Flex gap={{ column: 4 }}>
-                                    <p className="text-span1R text-dark-300">사용일 :</p>
+                                    <p className="text-span1R text-dark-300">
+                                      사용일 :
+                                    </p>
                                     <p className="text-span1B text-dark-300">
                                       {" "}
                                       {couponUseList.isActive === false
@@ -206,11 +237,17 @@ export default function MyHistory({
 }
 
 interface HistoryTabProps {
-  list: Array<{ label: string; values: "available" | "history"; contents: React.ReactNode }>;
+  list: Array<{
+    label: string;
+    values: "available" | "history";
+    contents: React.ReactNode;
+  }>;
 }
 
 function HistoryTab({ list }: HistoryTabProps) {
-  const [historyTabActive, setHistoryTabActive] = useState<"available" | "history">("available");
+  const [historyTabActive, setHistoryTabActive] = useState<
+    "available" | "history"
+  >("available");
 
   return (
     <>
@@ -243,7 +280,9 @@ function HistoryTab({ list }: HistoryTabProps) {
       <>
         {list.map(
           (tab) =>
-            tab.values === historyTabActive && <Fragment key={tab.values}>{tab.contents}</Fragment>
+            tab.values === historyTabActive && (
+              <Fragment key={tab.values}>{tab.contents}</Fragment>
+            )
         )}
       </>
     </>

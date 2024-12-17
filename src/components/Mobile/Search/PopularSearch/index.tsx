@@ -9,8 +9,13 @@ export default function MobilePopularSearch() {
     "시카고",
   ];
   return (
-    <Flex width={"100%"} direction="column" gap={{ row: 16 }} className="px-[4px] overflow-hidden">
-      <p className="text-p2B text-dark-950">인기검색어</p>
+    <Flex
+      width={"100%"}
+      direction="column"
+      gap={{ row: 16 }}
+      className="px-[4px] overflow-hidden"
+    >
+      <p className="text-p2B text-primary-900">인기검색어</p>
 
       <Flex width={"100%"}>
         <Flex width={24} direction="column">
@@ -38,19 +43,44 @@ export default function MobilePopularSearch() {
         </Flex>
 
         <Flex width={35} direction="column" items="end" className="mr-[4px]">
-          <Flex justify="end" items="center" gap={{ column: 8 }} className="h-[32px]">
+          <Flex
+            justify="end"
+            items="center"
+            gap={{ column: 8 }}
+            className="h-[32px]"
+          >
             <span className="text-span2Rt">ㅡ</span>
           </Flex>
-          <Flex justify="end" items="center" gap={{ column: 8 }} className="h-[32px]">
+          <Flex
+            justify="end"
+            items="center"
+            gap={{ column: 8 }}
+            className="h-[32px]"
+          >
             <span className="text-span2Rt">ㅡ</span>
           </Flex>
-          <Flex justify="end" items="center" gap={{ column: 8 }} className="h-[32px]">
+          <Flex
+            justify="end"
+            items="center"
+            gap={{ column: 8 }}
+            className="h-[32px]"
+          >
             <span className="text-span2Rt">ㅡ</span>
           </Flex>
-          <Flex justify="end" items="center" gap={{ column: 8 }} className="h-[32px]">
+          <Flex
+            justify="end"
+            items="center"
+            gap={{ column: 8 }}
+            className="h-[32px]"
+          >
             <span className="text-span2Rt">ㅡ</span>
           </Flex>
-          <Flex justify="end" items="center" gap={{ column: 8 }} className="h-[32px]">
+          <Flex
+            justify="end"
+            items="center"
+            gap={{ column: 8 }}
+            className="h-[32px]"
+          >
             <span className="text-span2Rt">ㅡ</span>
           </Flex>
         </Flex>

@@ -47,13 +47,13 @@ export default function MobileIntro() {
             </button>
           </Flex>
 
-          <h3 className="text-p1B text-dark-950 px-[12px]">
+          <h3 className="text-p1B text-primary-900 px-[12px]">
             👀 티켓모아에서 추천해드려요
           </h3>
           <MobilePromotion />
         </Flex>
         <Root>
-          <h3 className="text-p1B text-dark-950">주간 검색랭킹</h3>
+          <h3 className="text-p1B text-primary-900">주간 검색랭킹</h3>
           <MobileTab
             items={[
               { name: "공연", content: <MobileWeeklyRank /> },
@@ -63,7 +63,7 @@ export default function MobileIntro() {
           />
         </Root>
         <Root>
-          <h3 className="text-p1B text-dark-950">NEW 티켓오픈</h3>
+          <h3 className="text-p1B text-primary-900">NEW 티켓오픈</h3>
           <MobileTimeline />
         </Root>
         <MobileFooter />

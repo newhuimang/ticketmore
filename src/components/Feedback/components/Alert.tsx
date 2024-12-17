@@ -1,7 +1,11 @@
 import Flex from "@/components/Flex";
 import { FeedbackOptions } from "../iFeedback";
 import Divider from "@/components/Divider";
-import { BellFill, ExclamationCircleFill, InfoCircleFill } from "react-bootstrap-icons";
+import {
+  BellFill,
+  ExclamationCircleFill,
+  InfoCircleFill,
+} from "react-bootstrap-icons";
 import Button from "@/components/Button";
 
 export default function Alert({
@@ -24,7 +28,12 @@ export default function Alert({
             <Flex width={"100%"} className="bg-primary px-[16px] py-[10px]">
               <InfoCircleFill size={16} className="fill-white" />
             </Flex>
-            <Flex width={"100%"} direction="column" gap={{ row: 16 }} className="p-[16px] pb-[8px]">
+            <Flex
+              width={"100%"}
+              direction="column"
+              gap={{ row: 16 }}
+              className="p-[16px] pb-[8px]"
+            >
               <p className="text-p1R py-[4px]">{options.text}</p>
               <Divider color="bg-primary-100" />
               <Flex width={"100%"} justify="end" gap={{ column: 8 }}>
@@ -55,7 +64,12 @@ export default function Alert({
             <Flex width={"100%"} className="bg-state-R px-[16px] py-[10px]">
               <ExclamationCircleFill size={16} className="fill-white" />
             </Flex>
-            <Flex width={"100%"} direction="column" gap={{ row: 16 }} className="p-[16px] pb-[8px]">
+            <Flex
+              width={"100%"}
+              direction="column"
+              gap={{ row: 16 }}
+              className="p-[16px] pb-[8px]"
+            >
               <p className="text-p1R py-[4px]">{options.text}</p>
               <Divider color="bg-dark-100" />
               <Flex width={"100%"} justify="end" gap={{ column: 8 }}>
@@ -86,7 +100,12 @@ export default function Alert({
             <Flex width={"100%"} className="bg-dark-300 px-[16px] py-[10px]">
               <BellFill size={16} className="fill-white" />
             </Flex>
-            <Flex width={"100%"} direction="column" gap={{ row: 16 }} className="p-[16px] pb-[8px]">
+            <Flex
+              width={"100%"}
+              direction="column"
+              gap={{ row: 16 }}
+              className="p-[16px] pb-[8px]"
+            >
               <p className="text-p1R py-[4px]">{options.text}</p>
               <Divider color="bg-dark-100" />
               <Flex width={"100%"} justify="end" gap={{ column: 8 }}>
@@ -132,7 +151,11 @@ export function MobileAlert({
               <ExclamationCircleFill size={16} className="fill-primary" />
             </Flex>
             <Flex width={"100%"} direction="column">
-              <Flex width={"100%"} justify="center" className="px-[12px] py-[24px]">
+              <Flex
+                width={"100%"}
+                justify="center"
+                className="px-[12px] py-[24px]"
+              >
                 <p className="text-p2R text-dark">{options.text}</p>
               </Flex>
               <Flex width={"100%"}>
@@ -173,7 +196,11 @@ export function MobileAlert({
               <ExclamationCircleFill size={16} className="fill-state-R" />
             </Flex>
             <Flex width={"100%"} direction="column">
-              <Flex width={"100%"} justify="center" className="px-[12px] py-[24px]">
+              <Flex
+                width={"100%"}
+                justify="center"
+                className="px-[12px] py-[24px]"
+              >
                 <p className="text-p2R text-dark">{options.text}</p>
               </Flex>
               <Flex width={"100%"}>
@@ -215,7 +242,11 @@ export function MobileAlert({
               <ExclamationCircleFill size={16} className="fill-dark-900" />
             </Flex>
             <Flex width={"100%"} direction="column">
-              <Flex width={"100%"} justify="center" className="px-[12px] py-[24px]">
+              <Flex
+                width={"100%"}
+                justify="center"
+                className="px-[12px] py-[24px]"
+              >
                 <p className="text-p2R text-dark">{options.text}</p>
               </Flex>
               <Flex width={"100%"}>

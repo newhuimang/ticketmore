@@ -3,7 +3,12 @@ import useAuth from "@/store/useAuth";
 import Flex from "@/components/Flex";
 import MobileRoot from "@/components/Root/Mobile";
 
-import { ChevronRight, GiftFill, Server, StarFill } from "react-bootstrap-icons";
+import {
+  ChevronRight,
+  GiftFill,
+  Server,
+  StarFill,
+} from "react-bootstrap-icons";
 import useOverlay from "@/store/useOverlay";
 import MobileLogin from "@/pages/Mobile/Login";
 import MyHistory from "./MyHistory";
@@ -63,7 +68,12 @@ export default function MobileMyInfo() {
           </>
         ) : (
           <>
-            <Flex width={"100%"} items="end" gap={{ column: 4 }} className="px-[4px] text-white">
+            <Flex
+              width={"100%"}
+              items="end"
+              gap={{ column: 4 }}
+              className="px-[4px] text-white"
+            >
               <p className="text-p1B">로그인</p>
               <p className="text-p2R">이 필요한 서비스입니다</p>
             </Flex>
@@ -97,7 +107,11 @@ export default function MobileMyInfo() {
           <Flex items="end" gap={{ column: 4 }} className="text-primary-700">
             <p
               className="text-p2B underline"
-              onClick={() => openOverlay(<MyHistory type="point" data={user && user.points} />)}
+              onClick={() =>
+                openOverlay(
+                  <MyHistory type="point" data={user && user.points} />
+                )
+              }
             >
               {isLoggedIn ? user?.points.totalCount : "???"}
             </p>
@@ -126,7 +140,9 @@ export default function MobileMyInfo() {
 
             <p
               className="text-p2B text-primary-700 underline"
-              onClick={() => openOverlay(<MyHistory type="coupon" data={user?.coupons} />)}
+              onClick={() =>
+                openOverlay(<MyHistory type="coupon" data={user?.coupons} />)
+              }
             >
               {user ? user.coupons.totalCount : 0}
             </p>
@@ -145,7 +161,9 @@ export default function MobileMyInfo() {
 
             <p
               className="text-p2B text-primary-700 underline"
-              onClick={() => openOverlay(<MyHistory type="gifts" data={user?.gifts} />)}
+              onClick={() =>
+                openOverlay(<MyHistory type="gifts" data={user?.gifts} />)
+              }
             >
               {user ? user.gifts.totalCount : 0}
             </p>

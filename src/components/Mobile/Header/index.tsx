@@ -51,7 +51,9 @@ export default function MobileHeader() {
                   {
                     content: (
                       <Link to={"/"}>
-                        <span onClick={() => setIsActive("my")}>마이페이지</span>
+                        <span onClick={() => setIsActive("my")}>
+                          마이페이지
+                        </span>
                       </Link>
                     ),
                   },
