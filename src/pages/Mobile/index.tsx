@@ -21,22 +21,34 @@ export default function MobileMainTab() {
   const navItems: NavList[] = [
     {
       component: <MobileCategory />,
-      menu: { icon: <GridFill size={16} className="fill-inherit" />, label: "카테고리" },
+      menu: {
+        icon: <GridFill size={16} className="fill-inherit" />,
+        label: "카테고리",
+      },
       values: "category",
     },
     {
       component: <MobileIntro />,
-      menu: { icon: <HouseFill size={16} className="fill-inherit" />, label: "홈" },
+      menu: {
+        icon: <HouseFill size={16} className="fill-inherit" />,
+        label: "홈",
+      },
       values: "home",
     },
     {
       component: <MobileSearch />,
-      menu: { icon: <Search size={16} className="fill-inherit" />, label: "검색" },
+      menu: {
+        icon: <Search size={16} className="fill-inherit" />,
+        label: "검색",
+      },
       values: "search",
     },
     {
       component: <MobileMy />,
-      menu: { icon: <PersonFill size={16} className="fill-inherit" />, label: "마이" },
+      menu: {
+        icon: <PersonFill size={16} className="fill-inherit" />,
+        label: "마이",
+      },
       values: "my",
     },
   ];
@@ -50,7 +62,7 @@ export default function MobileMainTab() {
       ))}
 
       <div className="fixed z-10 w-full bottom-0 translate-y-[-16px] flex justify-center left-0">
-        <ul className="w-[calc(100vw-18px)] bg-white rounded-full px-[24px] py-[12px] flex justify-between shadow-bottomNav">
+        <ul className="w-[calc(100vw-18px)] max-w-[380px] bg-white rounded-full px-[32px] py-[16px] flex justify-between shadow-bottomNav box-border border border-primary-100">
           {navItems.map((items, i) => (
             <li
               key={i}
@@ -65,7 +77,7 @@ export default function MobileMainTab() {
 
               <span
                 className={`
-                  ${isActive === items.values ? "text-p2R text-primary animate-fadeIn" : "text-p2R hidden"}
+                  ${isActive === items.values ? "text-p1R text-primary animate-fadeIn" : "text-p1R hidden"}
                 `}
               >
                 {items.menu.label}
