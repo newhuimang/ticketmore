@@ -35,7 +35,8 @@
 }
 
 :root {
-  font-family: "Freesentation-4Regular, Freesentation-7Bold, Freesentation-9Black";
+  font-family: "Freesentation-4Regular", "Freesentation-7Bold",
+    "Freesentation-9Black", "system-ui";
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
