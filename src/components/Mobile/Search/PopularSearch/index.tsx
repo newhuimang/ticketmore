@@ -15,26 +15,26 @@ export default function MobilePopularSearch() {
       gap={{ row: 16 }}
       className="px-[4px] overflow-hidden"
     >
-      <p className="text-p2B text-primary-900">인기검색어</p>
+      <p className="text-subtitB text-primary-900">인기검색어</p>
 
       <Flex width={"100%"}>
-        <Flex width={24} direction="column">
+        <Flex width={24} direction="column" gap={{ row: 16 }}>
           {[1, 2, 3, 4, 5].map((number) => (
             <Flex
               key={number}
               width={24}
               items="center"
-              className={`${number === 1 ? "text-primary text-p2B" : "text-p2R text-dark"} h-[32px]`}
+              className={`${number === 1 ? "text-primary text-p1B" : "text-p1R text-dark"} h-[32px]`}
             >
               {number}
             </Flex>
           ))}
         </Flex>
-        <Flex width={"calc(100% - 59px)"} direction="column">
+        <Flex width={"calc(100% - 59px)"} direction="column" gap={{ row: 16 }}>
           {keyword.map((item, i) => {
             return (
               <Flex width={"100%"} key={i} items="center" className="h-[32px]">
-                <p className="w-full text-p2R text-ellipsis overflow-hidden whitespace-nowrap">
+                <p className="w-full text-p1R text-ellipsis overflow-hidden whitespace-nowrap">
                   {item}
                 </p>
               </Flex>
@@ -42,14 +42,20 @@ export default function MobilePopularSearch() {
           })}
         </Flex>
 
-        <Flex width={35} direction="column" items="end" className="mr-[4px]">
+        <Flex
+          width={35}
+          direction="column"
+          items="end"
+          gap={{ row: 16 }}
+          className="mr-[4px]"
+        >
           <Flex
             justify="end"
             items="center"
             gap={{ column: 8 }}
             className="h-[32px]"
           >
-            <span className="text-span2Rt">ㅡ</span>
+            <span className="text-p2Rt">ㅡ</span>
           </Flex>
           <Flex
             justify="end"
@@ -57,7 +63,7 @@ export default function MobilePopularSearch() {
             gap={{ column: 8 }}
             className="h-[32px]"
           >
-            <span className="text-span2Rt">ㅡ</span>
+            <span className="text-p2Rt">ㅡ</span>
           </Flex>
           <Flex
             justify="end"
@@ -65,7 +71,7 @@ export default function MobilePopularSearch() {
             gap={{ column: 8 }}
             className="h-[32px]"
           >
-            <span className="text-span2Rt">ㅡ</span>
+            <span className="text-p2Rt">ㅡ</span>
           </Flex>
           <Flex
             justify="end"
@@ -73,7 +79,7 @@ export default function MobilePopularSearch() {
             gap={{ column: 8 }}
             className="h-[32px]"
           >
-            <span className="text-span2Rt">ㅡ</span>
+            <span className="text-p2Rt">ㅡ</span>
           </Flex>
           <Flex
             justify="end"
@@ -81,7 +87,7 @@ export default function MobilePopularSearch() {
             gap={{ column: 8 }}
             className="h-[32px]"
           >
-            <span className="text-span2Rt">ㅡ</span>
+            <span className="text-p2Rt">ㅡ</span>
           </Flex>
         </Flex>
       </Flex>

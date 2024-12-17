@@ -12,8 +12,8 @@ export default function MobileSearch() {
       <Flex
         width={"100%"}
         direction="column"
-        gap={{ row: 16 }}
-        className="mt-[40px] bg-white"
+        gap={{ row: 24 }}
+        className="mt-[52px] bg-white"
       >
         <Flex
           width={"100%"}
@@ -29,7 +29,7 @@ export default function MobileSearch() {
         <Flex
           width={"100%"}
           justify="center"
-          className={`px-[12px] py-[14px] h-fit bg-gradient-to-br from-[#00467F] to-[#A5CC82]`}
+          className={`px-[12px] py-[16px] h-fit bg-gradient-to-br from-[#00467F] to-[#A5CC82]`}
         >
           <Flex
             width={"100%"}
@@ -39,35 +39,39 @@ export default function MobileSearch() {
           >
             <Flex gap={{ column: 4 }}>
               <Flex className="text-white">
-                <span className="text-span1B text-nowrap shadow-basic">
+                <span className="text-p1B text-nowrap shadow-basic">
                   설문조사
                 </span>
-                <span className="text-span1R text-nowrap shadow-basic">
+                <span className="text-p1R text-nowrap shadow-basic">
                   만 참여해도
                 </span>
               </Flex>
               <Flex gap={{ column: 2 }} className="text-white">
-                <span className="text-span1R shadow-basic">스타벅스</span>
-                <span className="text-span1B shadow-basic">기프티콘</span>
-                <span className="text-span1R shadow-basic">증정!</span>
+                <span className="text-p1R shadow-basic">스타벅스</span>
+                <span className="text-p1B shadow-basic">기프티콘</span>
+                <span className="text-p1R shadow-basic">증정!</span>
               </Flex>
             </Flex>
 
             <Flex width="w-[80%]" justify="center" gap={{ column: 8 }}>
-              <Flex width="w-fit" gap={{ column: 4 }} className="text-white">
-                <div className="text-span2B text-nowrap shadow-basic">
+              <Flex
+                width="w-fit"
+                gap={{ column: 4 }}
+                className="text-base-B pl-3"
+              >
+                <div className="text-p2B text-nowrap shadow-basic">
                   설문기한
                 </div>
-                <div className="text-span2R text-nowrap shadow-basic">
+                <div className="text-p2R text-nowrap shadow-basic">
                   {" "}
                   ~ 추후 공지 예정
                 </div>
               </Flex>
-              <Flex width="w-fit" gap={{ column: 4 }} className="text-white">
-                <div className="text-span2B text-nowrap shadow-basic">
+              <Flex width="w-fit" gap={{ column: 4 }} className="text-base-B">
+                <div className="text-p2B text-nowrap shadow-basic">
                   당첨자 안내
                 </div>
-                <div className="text-span2R text-nowrap shadow-basic">
+                <div className="text-p2R text-nowrap shadow-basic">
                   개별연락
                 </div>
               </Flex>
@@ -80,7 +84,7 @@ export default function MobileSearch() {
           </Flex>
         </Flex>
 
-        <Flex width={"100%"} className="px-[12px]">
+        <Flex width={"100%"} className="px-[12px] mb-[100px]">
           <MobilePopularSearch />
         </Flex>
       </Flex>

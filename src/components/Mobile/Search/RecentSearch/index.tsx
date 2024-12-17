@@ -15,11 +15,11 @@ export default function MobileRecentSearch() {
   return (
     <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
       <Flex width={"100%"} justify="between" items="end" className="px-[4px]">
-        <p className="text-p2B text-primary-900">최근 검색어</p>
+        <p className="text-subtitB text-primary-900">최근 검색어</p>
         <Button
           label={"전체삭제"}
           variant="text"
-          font="span1R"
+          font="p2R"
           size={24}
           textColor="DARK_300"
           onClick={() =>
@@ -32,21 +32,21 @@ export default function MobileRecentSearch() {
         />
       </Flex>
 
-      <Flex width={"100%"} gap={{ row: 8, column: 8 }} className="flex-wrap">
+      <Flex width={"100%"} gap={{ row: 16, column: 16 }} className="flex-wrap">
         {recent.map((item, i) => {
           return (
             <Flex
               key={i}
               items="center"
-              gap={{ column: 8 }}
-              className="h-[24px] min-w-[70px] bg-base-A px-[12px] rounded-full shadow-key"
+              gap={{ column: 16 }}
+              className="h-[32px] min-w-[70px] bg-base-A px-[12px] rounded-full shadow-key"
               onClick={() => alert({ text: "넘어가기" })}
             >
-              <span className="text-span1Rt text-dark-500">{item}</span>
+              <span className="text-p1Rt text-dark-500">{item}</span>
               <Button
                 size={12}
                 variant="icon"
-                label={<XLg size={8} className="fill-dark-300" />}
+                label={<XLg size={14} className="fill-dark-300" />}
                 onClick={(e) => {
                   e.stopPropagation();
                   alert({

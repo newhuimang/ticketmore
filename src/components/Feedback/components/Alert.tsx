@@ -147,34 +147,36 @@ export function MobileAlert({
             direction="column"
             className="absolute bg-white top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] shadow-feedback rounded-[16px] overflow-hidden"
           >
-            <Flex width={"100%"} justify="center" className="pt-[8px]">
-              <ExclamationCircleFill size={16} className="fill-primary" />
+            <Flex width={"100%"} justify="center" className="pt-[12px]">
+              <ExclamationCircleFill size={24} className="fill-primary" />
             </Flex>
             <Flex width={"100%"} direction="column">
               <Flex
                 width={"100%"}
                 justify="center"
-                className="px-[12px] py-[24px]"
+                className="px-[12px] py-[40px]"
               >
-                <p className="text-p2R text-dark">{options.text}</p>
+                <p className="text-p1R text-dark">{options.text}</p>
               </Flex>
               <Flex width={"100%"}>
                 <div className="w-[50%] flex justify-center bg-base-A">
                   <Button
+                    type="button"
                     width={"50%"}
-                    font="span1R"
+                    font="p2B"
                     bgColor="BASE_A"
                     textColor="DARK_500"
-                    size={32}
+                    size={40}
                     label={options.cancelText || "취소"}
                     onClick={onCancel}
                   />
                 </div>
                 <div className="w-[50%] flex justify-center bg-primary">
                   <Button
+                    type="button"
                     width={"100%"}
-                    font="span1B"
-                    size={32}
+                    font="p2B"
+                    size={40}
                     label={options.okText || "확인"}
                     onClick={onOk}
                   />
@@ -192,35 +194,37 @@ export function MobileAlert({
             direction="column"
             className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] shadow-feedback rounded-[16px] overflow-hidden bg-white"
           >
-            <Flex width={"100%"} justify="center" className="pt-[8px]">
-              <ExclamationCircleFill size={16} className="fill-state-R" />
+            <Flex width={"100%"} justify="center" className="pt-[12px]">
+              <ExclamationCircleFill size={24} className="fill-state-R" />
             </Flex>
             <Flex width={"100%"} direction="column">
               <Flex
                 width={"100%"}
                 justify="center"
-                className="px-[12px] py-[24px]"
+                className="px-[12px] py-[40px]"
               >
-                <p className="text-p2R text-dark">{options.text}</p>
+                <p className="text-p1R text-dark">{options.text}</p>
               </Flex>
               <Flex width={"100%"}>
                 <div className="w-[50%] flex justify-center bg-base-A">
                   <Button
+                    type="button"
                     width={"50%"}
-                    font="span1R"
+                    font="p2B"
                     bgColor="BASE_A"
                     textColor="DARK_500"
-                    size={32}
+                    size={40}
                     label={options.cancelText || "취소"}
                     onClick={onCancel}
                   />
                 </div>
                 <div className="w-[50%] flex justify-center bg-state-R">
                   <Button
+                    type="button"
                     width={"100%"}
-                    font="span1B"
+                    font="p2B"
                     bgColor="STATE_R"
-                    size={32}
+                    size={40}
                     label={options.okText || "확인"}
                     onClick={onOk}
                   />
@@ -238,35 +242,37 @@ export function MobileAlert({
             direction="column"
             className="absolute bg-white top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] shadow-feedback rounded-[16px] overflow-hidden"
           >
-            <Flex width={"100%"} justify="center" className="pt-[8px]">
-              <ExclamationCircleFill size={16} className="fill-dark-900" />
+            <Flex width={"100%"} justify="center" className="pt-[12px]">
+              <ExclamationCircleFill size={24} className="fill-dark-900" />
             </Flex>
             <Flex width={"100%"} direction="column">
               <Flex
                 width={"100%"}
                 justify="center"
-                className="px-[12px] py-[24px]"
+                className="px-[12px] py-[32px]"
               >
-                <p className="text-p2R text-dark">{options.text}</p>
+                <p className="text-p1R text-dark">{options.text}</p>
               </Flex>
               <Flex width={"100%"}>
                 <div className="w-[50%] flex justify-center bg-base-A">
                   <Button
+                    type="button"
                     width={"50%"}
-                    font="span1R"
+                    font="p2B"
                     bgColor="BASE_A"
                     textColor="DARK_500"
-                    size={32}
+                    size={40}
                     label={options.cancelText || "취소"}
                     onClick={onCancel}
                   />
                 </div>
                 <div className="w-[50%] flex justify-center bg-dark-900">
                   <Button
+                    type="button"
                     width={"100%"}
-                    font="span1B"
+                    font="p2B"
                     bgColor="DARK_900"
-                    size={32}
+                    size={40}
                     label={options.okText || "확인"}
                     onClick={onOk}
                   />

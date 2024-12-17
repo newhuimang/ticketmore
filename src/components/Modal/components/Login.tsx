@@ -22,7 +22,7 @@ export default function Login({ close }: { close: () => void }) {
       className="py-[16px]"
     >
       <Flex width={"100%"} justify="between" items="center">
-        <p className="text-p2R">티켓모아에 처음 방문하시나요?</p>
+        <p className="text-p1R">티켓모아에 처음 방문하시나요?</p>
         <button className="flex items-center text-p2B text-primary px-[16px] h-[32px] hover:bg-base-A hover:rounded-[8px]">
           회원가입
         </button>
@@ -71,7 +71,7 @@ export default function Login({ close }: { close: () => void }) {
               <Button
                 type="submit"
                 font="p1Bt"
-                label="로그인"
+                label={isSubmitting ? "잠시만 기다려주세요" : "로그인"}
                 disabled={isSubmitting}
               />
             </Flex>

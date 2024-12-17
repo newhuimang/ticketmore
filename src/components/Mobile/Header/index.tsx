@@ -69,7 +69,7 @@ export default function MobileHeader() {
         <Button
           variant="text"
           label="로그인"
-          font="span1R"
+          font="p2R"
           size={32}
           onClick={() => {
             openOverlay(<MobileLogin />);

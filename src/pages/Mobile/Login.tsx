@@ -8,6 +8,7 @@ import Divider from "@/components/Divider";
 import Button from "@/components/Button";
 import useOverlay from "@/store/useOverlay";
 import Input from "@/components/Form/Input";
+import useFeedback from "@/store/useFeedback";
 
 // Form values type
 interface FormValues {
@@ -18,6 +19,7 @@ interface FormValues {
 export default function MobileLogin() {
   const { login } = useAuth();
   const { closeOverlay } = useOverlay();
+  const feedback = useFeedback();
 
   const validationSchema = Yup.object({
     id: Yup.string()
@@ -60,49 +62,52 @@ export default function MobileLogin() {
                 className="py-[16px] px-[12px] "
               >
                 <Flex width={"100%"} justify="between" items="center">
-                  <p className="text-p2R">티켓모아에 처음 방문하시나요?</p>
+                  <p className="text-p1R">티켓모아에 처음 방문하시나요?</p>
                   <Button
                     variant="text"
                     label="회원가입"
-                    font="p2B"
+                    font="p1B"
                     textColor="PRIMARY"
+                    onClick={() =>
+                      feedback.toast({ text: "서비스 준비중입니다." })
+                    }
                   />
                 </Flex>
                 <Form className="w-full">
                   <Flex width={"100%"} direction="column" gap={{ row: 60 }}>
-                    <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
-                      <Field name="id">
-                        {({ field }: FieldProps) => (
-                          <Input
-                            {...field}
-                            size={40}
-                            type="text"
-                            placeholder="아이디를 입력해주세요"
-                            label="ID"
-                          />
-                        )}
-                      </Field>
-                      <Field name="pw">
-                        {({ field }: FieldProps) => (
-                          <Input
-                            {...field}
-                            size={40}
-                            type="password"
-                            placeholder="비밀번호를 입력해주세요"
-                            label="PW"
-                          />
-                        )}
-                      </Field>
+                    <Flex width={"100%"} direction="column" gap={{ row: 24 }}>
+                      <Flex width={"100%"} direction="column" gap={{ row: 8 }}>
+                        <Field name="id">
+                          {({ field }: FieldProps) => (
+                            <Input
+                              {...field}
+                              type="text"
+                              placeholder="아이디를 입력해주세요"
+                              label="ID"
+                            />
+                          )}
+                        </Field>
+                        <Field name="pw">
+                          {({ field }: FieldProps) => (
+                            <Input
+                              {...field}
+                              type="password"
+                              placeholder="비밀번호를 입력해주세요"
+                              label="PW"
+                            />
+                          )}
+                        </Field>
+                      </Flex>
                       <Flex
                         items="center"
                         gap={{ column: 8 }}
                         className="ml-auto"
                       >
-                        <button className="flex items-center text-span1R text-dark">
+                        <button className="flex items-center text-p2R text-dark">
                           아이디찾기
                         </button>
                         <Divider type="vertical" height={10} />
-                        <button className="flex items-center text-span1R text-dark">
+                        <button className="flex items-center text-p2R text-dark">
                           비밀번호찾기
                         </button>
                       </Flex>
@@ -115,8 +120,8 @@ export default function MobileLogin() {
               <Button
                 type="submit"
                 width="100%"
-                label="로그인"
-                bgColor="PRIMARY_900"
+                label={isSubmitting ? "잠시만 기다려주세요" : "로그인"}
+                bgColor={isSubmitting ? "BASE_A" : "PRIMARY_900"}
                 font="p2B"
                 size={50}
                 disabled={isSubmitting || !isValid || !dirty}

@@ -20,7 +20,7 @@ export default function Chip({
       );
     case "outline":
       return (
-        <div className="px-[12px] h-[32px] bg-white border border-dark-300 flex justify-center items-center rounded-full">
+        <div className="px-[12px] h-[32px] bg-white border border-base_B flex justify-center items-center rounded-full">
           {label}
         </div>
       );

@@ -84,10 +84,8 @@ export default function MobileTimeline() {
                       <Chip
                         label={
                           <Flex gap={{ column: 4 }}>
-                            <span className="text-span1R">
-                              {items.openDate}
-                            </span>
-                            <span className="text-span1B">{displayTime}</span>
+                            <span className="text-p2R">{items.openDate}</span>
+                            <span className="text-p2B">{displayTime}</span>
                           </Flex>
                         }
                         variant="outline"
@@ -109,7 +107,7 @@ export default function MobileTimeline() {
                         >
                           {/* thumbnail */}
                           <div
-                            className="bg-no-repeat bg-cover bg-center rounded-[8px] min-w-[80px] w-[80px] h-[80px]"
+                            className="bg-no-repeat bg-cover bg-center rounded-[12px] min-w-[100px] w-[100px] h-[100px]"
                             style={{ backgroundImage: `url(${event.image})` }}
                           />
 
@@ -117,18 +115,18 @@ export default function MobileTimeline() {
                           <Flex
                             width={"100%"}
                             items="stretch"
-                            className="rounded-[8px] overflow-hidden bg-base-B"
+                            className="rounded-[12px] overflow-hidden bg-base-B"
                           >
                             <Flex
                               width={"100%"}
                               direction="column"
                               justify="between"
-                              className="p-[8px]"
+                              className="p-[16px]"
                             >
-                              <p className="text-p2R">{event.name}</p>
+                              <p className="text-p1R">{event.name}</p>
 
                               <Flex width={"100%"} gap={{ column: 4 }}>
-                                <span className="text-span1R text-dark-300">
+                                <span className="text-p2R text-dark-300">
                                   {event.startDate} {event.endDate !== "-"}
                                   {event.endDate !== event.endDate}
                                 </span>
@@ -136,7 +134,7 @@ export default function MobileTimeline() {
                             </Flex>
 
                             <Flex
-                              width={32}
+                              width={60}
                               items="center"
                               justify="center"
                               className={`${event.alarm ? "bg-primary" : "bg-dark-100"} min-w-[32px] cursor-pointer`}

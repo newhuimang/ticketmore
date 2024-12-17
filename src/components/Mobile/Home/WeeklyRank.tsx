@@ -51,7 +51,7 @@ export default function MobileWeeklyRank() {
   }
 
   return (
-    <Flex width={"100%"} direction="column" gap={{ row: 24 }}>
+    <Flex width={"100%"} direction="column" gap={{ row: 32 }}>
       <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
         {data.slice(0, 3).map((item, index) => {
           return (
@@ -77,8 +77,8 @@ export default function MobileWeeklyRank() {
                   className="px-[12px] h-[144px] bg-base-A rounded-[12px] py-[8px]"
                 >
                   <Flex direction="column">
-                    <p className="text-p2B">{item.name}</p>
-                    <span className="text-span2R text-dark-300">
+                    <p className="text-p1B">{item.name}</p>
+                    <span className="text-p2R text-dark-300">
                       {item.event.startDate} {item.event.startDate}
                     </span>
                   </Flex>
@@ -89,11 +89,11 @@ export default function MobileWeeklyRank() {
                   </Flex>
 
                   <Flex items="center" gap={{ column: 8 }}>
-                    <span className="text-span2R text-dark-300">
+                    <span className="text-p2R text-dark-300">
                       {item.category}
                     </span>
-                    <Divider type="vertical" height={8} />
-                    <span className="text-span2R text-dark-300">
+                    <Divider type="vertical" height={14} />
+                    <span className="text-p2R text-dark-300">
                       {item.event.ageLimit}
                     </span>
                   </Flex>
@@ -105,7 +105,7 @@ export default function MobileWeeklyRank() {
           );
         })}
       </Flex>
-      <Button font="p2B" bgColor="PRIMARY_900" label="더보기" />
+      <Button font="p1B" size={50} bgColor="PRIMARY_900" label="더보기" />
     </Flex>
   );
 }

@@ -25,7 +25,7 @@ export default function MobileTab({ items }: TabProps) {
           <button
             key={index}
             onClick={() => handleTabClick(index)}
-            className={`text-p2B ${activeTab === index ? "text-primary" : "text-dark-300"}`}
+            className={`text-p1B ${activeTab === index ? "text-primary" : "text-dark-300"}`}
           >
             {item.name}
           </button>

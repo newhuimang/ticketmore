@@ -37,7 +37,7 @@ export default function MobileIntro() {
           >
             <input
               placeholder="검색어를 입력하세요"
-              className="w-full border border-primary-300 pl-[12px] h-[32px] rounded-[8px] focus:outline-none text-p2Rt placeholder:text-dark-300 placeholder:text-p2Rt"
+              className="w-full border border-primary-300 pl-[12px] h-[52px] rounded-[8px] focus:outline-none text-p1Rt placeholder:text-dark-300 placeholder:text-p1Rt"
             />
 
             <button
@@ -47,13 +47,13 @@ export default function MobileIntro() {
             </button>
           </Flex>
 
-          <h3 className="text-p1B text-primary-900 px-[12px]">
+          <h3 className="text-subtitB text-primary-900 px-[12px]">
             👀 티켓모아에서 추천해드려요
           </h3>
           <MobilePromotion />
         </Flex>
         <Root>
-          <h3 className="text-p1B text-primary-900">주간 검색랭킹</h3>
+          <h3 className="text-subtitB text-primary-900">주간 검색랭킹</h3>
           <MobileTab
             items={[
               { name: "공연", content: <MobileWeeklyRank /> },
@@ -63,7 +63,7 @@ export default function MobileIntro() {
           />
         </Root>
         <Root>
-          <h3 className="text-p1B text-primary-900">NEW 티켓오픈</h3>
+          <h3 className="text-subtitB text-primary-900">NEW 티켓오픈</h3>
           <MobileTimeline />
         </Root>
         <MobileFooter />

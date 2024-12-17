@@ -27,6 +27,11 @@ export default {
         str2B: ["20px"],
         str2R: ["20px"],
 
+        subtitBt: ["18px", { lineHeight: 1 }],
+        subtitRt: ["18px", { lineHeight: 1 }],
+        subtitB: ["18px"],
+        subtitR: ["18px"],
+
         p1Bt: ["16px", { lineHeight: 1 }],
         p1Rt: ["16px", { lineHeight: 1 }],
         p1B: ["16px"],

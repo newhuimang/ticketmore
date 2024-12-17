@@ -8,7 +8,7 @@ export default function Input({
   value,
   type,
   placeholder,
-  size = 32,
+  size = 52,
   onChange,
 }: InputProps) {
   // const [isClicked, setIsClicked] = useState(false);
@@ -28,7 +28,7 @@ export default function Input({
         {label && (
           <label
             htmlFor={name}
-            className="text-p2B text-primary-200 whitespace-nowrap"
+            className="text-p1B text-primary-200 whitespace-nowrap"
           >
             {label}
           </label>
@@ -39,7 +39,7 @@ export default function Input({
           type={type}
           value={value}
           placeholder={placeholder}
-          className="w-full border-none focus:outline-none text-p2R placeholder:text-p2R"
+          className="w-full border-none focus:outline-none text-p1R placeholder:text-p1R"
           onChange={onChange}
         />
       </Flex>

@@ -22,11 +22,11 @@ export default function MobileMyContainer({ list, label }: Container) {
       gap={{ row: 16 }}
       className="px-[12px]"
     >
-      <p className="text-p1B text-primary-900 px-[4px]">{label}</p>
+      <p className="text-subtitB text-primary-900 px-[4px]">{label}</p>
       <Flex
         width={"100%"}
         direction="column"
-        className="bg-white shadow-basic px-[12px] py-[0] rounded-[12px]"
+        className="bg-white shadow-basic px-[12px] rounded-[16px]"
       >
         {list.map((item, index) => {
           return (
@@ -37,7 +37,7 @@ export default function MobileMyContainer({ list, label }: Container) {
                 justify="between"
                 items="center"
                 onClick={() => openOverlay(item.contents)}
-                className="py-[12px]"
+                className="py-[16px]"
               >
                 <Flex items="center" gap={{ column: 8 }}>
                   {item.icon}
