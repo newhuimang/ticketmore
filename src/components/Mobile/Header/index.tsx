@@ -43,8 +43,8 @@ export default function MobileHeader() {
               {
                 title: (
                   <Flex items="center" gap={{ column: 4 }}>
-                    <span className="text-p2B text-primary-900">{auth.id}</span>
-                    <span className="text-p2R text-dark-500">님</span>
+                    <span className="text-p1B text-primary-900">{auth.id}</span>
+                    <span className="text-p1R text-dark-500">님</span>
                   </Flex>
                 ),
                 list: [

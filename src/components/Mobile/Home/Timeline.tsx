@@ -115,7 +115,7 @@ export default function MobileTimeline() {
                           <Flex
                             width={"100%"}
                             items="stretch"
-                            className="rounded-[12px] overflow-hidden bg-base-B"
+                            className="rounded-[12px] overflow-hidden bg-base-A"
                           >
                             <Flex
                               width={"100%"}
@@ -137,7 +137,7 @@ export default function MobileTimeline() {
                               width={60}
                               items="center"
                               justify="center"
-                              className={`${event.alarm ? "bg-primary" : "bg-dark-100"} min-w-[32px] cursor-pointer`}
+                              className={`${isLoggedIn ? (event.alarm ? "bg-primary" : "bg-dark-100") : "bg-dark-100"} min-w-[32px] cursor-pointer`}
                               onClick={() => {
                                 if (isLoggedIn) {
                                   toggleAlarm(items.id, event.id);
