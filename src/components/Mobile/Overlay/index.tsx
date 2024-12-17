@@ -8,7 +8,11 @@ import { ArrowLeft } from "react-bootstrap-icons";
 import { OverlayHeadProps } from "./IOverlay";
 import { useEffect } from "react";
 
-function OverlayHead({ size = 16, className = "fill-dark", title }: OverlayHeadProps) {
+function OverlayHead({
+  size = 24,
+  className = "fill-primary-900",
+  title,
+}: OverlayHeadProps) {
   const { closeOverlay } = useOverlay();
   return (
     <MobileNavBar
@@ -21,7 +25,10 @@ function OverlayHead({ size = 16, className = "fill-dark", title }: OverlayHeadP
 
 function OverlayBody({ children }: { children: React.ReactNode }) {
   return (
-    <Flex width="100%" className="bg-white box-border mt-[40px] h-[calc(100%-114px)]">
+    <Flex
+      width="100%"
+      className="bg-white box-border mt-[40px] h-[calc(100%-114px)]"
+    >
       {children}
     </Flex>
   );

@@ -49,7 +49,7 @@ export default function FeedbackMessage({
         >
           <Flex
             width="fit-content"
-            className="absolute z-50 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] px-[24px] py-[12px] bg-[#18193395] text-white backdrop-blur-[20px] rounded-[12px] shadow-feedback"
+            className="absolute z-50 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] px-[24px] py-[12px] bg-[#18193395] text-white backdrop-blur-[20px] rounded-[16px] shadow-feedback"
           >
             <p className="text-p1R">{options.text}</p>
           </Flex>

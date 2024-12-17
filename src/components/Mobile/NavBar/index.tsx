@@ -37,7 +37,7 @@ export default function MobileNavBar({
           {icon}
         </Flex>
       )}
-      {title && <p className="text-p1B text-dark">{title}</p>}
+      {title && <p className="text-p1B text-primary-900">{title}</p>}
     </Flex>
   );
 }

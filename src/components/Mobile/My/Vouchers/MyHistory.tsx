@@ -55,17 +55,17 @@ export default function MyHistory({
                         direction="column"
                         gap={{ row: 8 }}
                       >
-                        <p className="text-span1R text-dark-300">
+                        <p className="text-p2R text-dark-300">
                           {historyItem.update}
                         </p>
                         <Flex width={"100%"} justify="between">
-                          <p className="text-p2R">
+                          <p className="text-p1R">
                             {historyItem.rewardSource
                               ? historyItem.rewardSource
                               : historyItem.usePoint}
                           </p>
                           <p
-                            className={`text-p2B ${historyItem.getReward !== 0 ? "text-primary" : "text-state-R"}`}
+                            className={`text-p1B ${historyItem.getReward !== 0 ? "text-primary" : "text-state-R"}`}
                           >
                             {historyItem.getReward !== 0
                               ? `+ ` + historyItem.getReward
@@ -83,7 +83,7 @@ export default function MyHistory({
                 )}
               </Flex>
 
-              <p className="text-divR text-dark-300 ml-auto">
+              <p className="text-span1R text-dark-300 ml-auto mb-[8px]">
                 *최근 6개월 내역까지 조회 가능합니다
               </p>
             </>
@@ -226,7 +226,7 @@ export default function MyHistory({
         <Flex
           width={"100%"}
           direction="column"
-          gap={{ row: 16 }}
+          gap={{ row: 24 }}
           className="bg-white px-[12px] pt-[16px]"
         >
           {contents()}

@@ -55,8 +55,8 @@ export default function MobileMyInfo() {
         {isLoggedIn ? (
           <>
             <Flex gap={{ column: 4 }} className="px-[4px]">
-              <p className="text-str2B text-primary-100">Ticket</p>
-              <p className="text-str2R text-primary-100">More</p>
+              <p className="text-p1B text-primary-100">Ticket</p>
+              <p className="text-p1R text-primary-100">More</p>
             </Flex>
 
             {auth && (
@@ -75,7 +75,7 @@ export default function MobileMyInfo() {
               className="px-[4px] text-white"
             >
               <p className="text-str2B">로그인</p>
-              <p className="text-str2R">이 필요한 서비스입니다</p>
+              <p className="tex-p1R">이 필요한 서비스입니다</p>
             </Flex>
             <ChevronRight
               size={22}
@@ -107,11 +107,13 @@ export default function MobileMyInfo() {
           <Flex items="end" gap={{ column: 4 }} className="text-primary-700">
             <p
               className="text-p1B underline"
-              onClick={() =>
-                openOverlay(
-                  <MyHistory type="point" data={user && user.points} />
-                )
-              }
+              onClick={() => {
+                if (isLoggedIn) {
+                  openOverlay(
+                    <MyHistory type="point" data={user && user.points} />
+                  );
+                }
+              }}
             >
               {isLoggedIn ? user?.points.totalCount : "???"}
             </p>
@@ -140,9 +142,11 @@ export default function MobileMyInfo() {
 
             <p
               className="text-p1B text-primary-700 underline"
-              onClick={() =>
-                openOverlay(<MyHistory type="coupon" data={user?.coupons} />)
-              }
+              onClick={() => {
+                if (isLoggedIn) {
+                  openOverlay(<MyHistory type="coupon" data={user?.coupons} />);
+                }
+              }}
             >
               {user ? user.coupons.totalCount : 0}
             </p>
@@ -161,9 +165,11 @@ export default function MobileMyInfo() {
 
             <p
               className="text-p1B text-primary-700 underline"
-              onClick={() =>
-                openOverlay(<MyHistory type="gifts" data={user?.gifts} />)
-              }
+              onClick={() => {
+                if (isLoggedIn) {
+                  openOverlay(<MyHistory type="gifts" data={user?.gifts} />);
+                }
+              }}
             >
               {user ? user.gifts.totalCount : 0}
             </p>
