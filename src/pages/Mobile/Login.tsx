@@ -1,15 +1,19 @@
 import * as Yup from "yup";
-import { Form, Formik } from "formik";
+import { Form, Formik, Field, FieldProps } from "formik";
 
 import useAuth from "@/store/useAuth";
-
 import Overlay from "@/components/Mobile/Overlay";
 import Flex from "@/components/Flex";
-
 import Divider from "@/components/Divider";
 import Button from "@/components/Button";
 import useOverlay from "@/store/useOverlay";
 import Input from "@/components/Form/Input";
+
+// Form values type
+interface FormValues {
+  id: string;
+  pw: string;
+}
 
 export default function MobileLogin() {
   const { login } = useAuth();
@@ -30,7 +34,7 @@ export default function MobileLogin() {
   return (
     <Overlay>
       <Overlay.Head title="로그인" />
-      <Formik
+      <Formik<FormValues>
         initialValues={{
           id: "",
           pw: "",
@@ -67,20 +71,28 @@ export default function MobileLogin() {
                 <Form className="w-full">
                   <Flex width={"100%"} direction="column" gap={{ row: 60 }}>
                     <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
-                      <Input
-                        size={40}
-                        name="id"
-                        type="text"
-                        placeholder="아이디를 입력해주세요"
-                        label={"ID"}
-                      />
-                      <Input
-                        size={40}
-                        name="pw"
-                        type="password"
-                        placeholder="비밀번호를 입력해주세요"
-                        label={"pw"}
-                      />
+                      <Field name="id">
+                        {({ field }: FieldProps) => (
+                          <Input
+                            {...field}
+                            size={40}
+                            type="text"
+                            placeholder="아이디를 입력해주세요"
+                            label="ID"
+                          />
+                        )}
+                      </Field>
+                      <Field name="pw">
+                        {({ field }: FieldProps) => (
+                          <Input
+                            {...field}
+                            size={40}
+                            type="password"
+                            placeholder="비밀번호를 입력해주세요"
+                            label="PW"
+                          />
+                        )}
+                      </Field>
                       <Flex
                         items="center"
                         gap={{ column: 8 }}
@@ -101,9 +113,9 @@ export default function MobileLogin() {
             </Overlay.Body>
             <Overlay.Control>
               <Button
-                type={"submit"}
-                width={"100%"}
-                label={"로그인"}
+                type="submit"
+                width="100%"
+                label="로그인"
                 bgColor="PRIMARY_900"
                 font="p2B"
                 size={50}

@@ -35,7 +35,7 @@ export default function MobileMy({}: {}) {
           width={"100%"}
           direction="column"
           gap={{ row: 16 }}
-          className="mt-[40px] pb-[16px] bg-base-A"
+          className="mt-[52px] pb-[16px] bg-base-A"
         >
           <MobileMyInfo />
           <MobileMyContainer
@@ -44,19 +44,19 @@ export default function MobileMy({}: {}) {
               {
                 id: "history",
                 title: "예매/예매취소",
-                icon: <TicketPerforated size={14} className="fill-dark-500" />,
+                icon: <TicketPerforated size={16} className="fill-dark-500" />,
                 contents: <MobileMyBooking />,
               },
               {
                 id: "waiting",
                 title: "예매대기",
-                icon: <Cart2 size={14} className="fill-dark-500" />,
+                icon: <Cart2 size={16} className="fill-dark-500" />,
                 contents: <>ㅇ</>,
               },
               {
                 id: "mo-ticket",
                 title: "모바일티켓",
-                icon: <Phone size={14} className="fill-dark-500" />,
+                icon: <Phone size={16} className="fill-dark-500" />,
                 contents: <>ㅇ</>,
               },
             ]}
@@ -67,17 +67,17 @@ export default function MobileMy({}: {}) {
               {
                 id: "card",
                 title: "카드",
-                icon: <CreditCard size={14} className="fill-dark-500" />,
+                icon: <CreditCard size={16} className="fill-dark-500" />,
               },
               {
                 id: "account",
                 title: "결제계좌",
-                icon: <Coin size={14} className="fill-dark-500" />,
+                icon: <Coin size={16} className="fill-dark-500" />,
               },
               {
                 id: "refund",
                 title: "환불계좌",
-                icon: <CashCoin size={14} className="fill-dark-500" />,
+                icon: <CashCoin size={16} className="fill-dark-500" />,
               },
             ]}
           />
@@ -87,12 +87,12 @@ export default function MobileMy({}: {}) {
               {
                 id: "contact",
                 title: "1 : 1 문의",
-                icon: <Headset size={14} className="fill-dark-500" />,
+                icon: <Headset size={16} className="fill-dark-500" />,
               },
               {
                 id: "faq",
                 title: "FAQ",
-                icon: <QuestionCircle size={14} className="fill-dark-500" />,
+                icon: <QuestionCircle size={16} className="fill-dark-500" />,
               },
             ]}
           />
@@ -100,18 +100,17 @@ export default function MobileMy({}: {}) {
             <Flex
               width={"100%"}
               direction="column"
-              gap={{ row: 8 }}
-              className="p-[12px] shadow-basic bg-white rounded-[12px]"
+              className="px-[12px] shadow-basic bg-white rounded-[12px]"
             >
               {/* 로그아웃 */}
-              <Flex items="center" gap={{ column: 8 }}>
-                <BoxArrowRight size={14} className="fill-dark-500" />
+              <Flex items="center" gap={{ column: 8 }} className="py-[12px]">
+                <BoxArrowRight size={16} className="fill-dark-500" />
                 <p
                   onClick={() => {
                     logout();
                     window.scrollTo(0, 0);
                   }}
-                  className="text-p2R"
+                  className="text-p1R"
                 >
                   로그아웃
                 </p>
@@ -120,15 +119,15 @@ export default function MobileMy({}: {}) {
               <Divider color="bg-base-A" />
 
               {/* 회원탈퇴 */}
-              <Flex items="center" gap={{ column: 8 }}>
-                <DoorOpen size={14} className="fill-dark-500" />
+              <Flex items="center" gap={{ column: 8 }} className="py-[12px]">
+                <DoorOpen size={16} className="fill-dark-500" />
                 <p
                   onClick={() => {
                     feedbacck.toast({
                       text: "서비스 준비중입니다.",
                     });
                   }}
-                  className="text-p2R"
+                  className="text-p1R"
                 >
                   회원탈퇴
                 </p>

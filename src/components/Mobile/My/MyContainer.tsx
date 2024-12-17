@@ -19,15 +19,14 @@ export default function MobileMyContainer({ list, label }: Container) {
     <Flex
       width={"100%"}
       direction="column"
-      gap={{ row: 8 }}
+      gap={{ row: 16 }}
       className="px-[12px]"
     >
-      <p className="text-p2B text-dark-800 px-[4px]">{label}</p>
+      <p className="text-p1B text-primary-900 px-[4px]">{label}</p>
       <Flex
         width={"100%"}
         direction="column"
-        gap={{ row: 8 }}
-        className="bg-white shadow-basic p-[12px] rounded-[12px]"
+        className="bg-white shadow-basic px-[12px] py-[0] rounded-[12px]"
       >
         {list.map((item, index) => {
           return (
@@ -38,13 +37,14 @@ export default function MobileMyContainer({ list, label }: Container) {
                 justify="between"
                 items="center"
                 onClick={() => openOverlay(item.contents)}
+                className="py-[12px]"
               >
                 <Flex items="center" gap={{ column: 8 }}>
                   {item.icon}
-                  <p className="text-p2R">{item.title}</p>
+                  <p className="text-p1R">{item.title}</p>
                 </Flex>
 
-                <ChevronRight size={14} className="fill-dark-500" />
+                <ChevronRight size={16} className="fill-dark-500" />
               </Flex>
 
               {index < list.length - 1 && <Divider color="bg-base-A" />}

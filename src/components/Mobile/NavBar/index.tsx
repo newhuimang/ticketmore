@@ -24,7 +24,7 @@ export default function MobileNavBar({
       width="100vw"
       justify="center"
       items="center"
-      className={`fixed h-[40px] bg-[#ffffff70] backdrop-blur-[100px] z-10 box-border ${headerStyle > 40 ? "shadow-key border-b border-primary-100" : ""}`}
+      className={`fixed h-[52px] bg-[#ffffff70] backdrop-blur-[100px] z-10 box-border ${headerStyle > 52 ? "shadow-key border-b border-primary-100" : ""}`}
     >
       {icon && (
         <Flex
@@ -37,7 +37,7 @@ export default function MobileNavBar({
           {icon}
         </Flex>
       )}
-      {title && <p className="text-p2B text-dark">{title}</p>}
+      {title && <p className="text-p1B text-dark">{title}</p>}
     </Flex>
   );
 }
