@@ -52,23 +52,17 @@ function Overlay({ children }: { children: React.ReactNode }) {
   // open 시 background scroll 방지
   useEffect(() => {
     if (isOpen) {
-      document.body.style.position = "fixed";
-      document.body.style.top = "0";
-      document.body.style.left = "0";
-      document.body.style.width = "100%";
-      document.body.style.height = "100%";
       document.body.style.overflow = "hidden";
+      window.scrollTo(0, 1);
     } else {
-      document.body.style.position = "auto";
       document.body.style.overflow = "auto";
     }
-
-    // Cleanup
     return () => {
-      document.body.style.position = "auto";
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
+
+  if (!isOpen) return null;
 
   return (
     <Flex
