@@ -14,9 +14,9 @@ export default function FeedbackMessage({
   const { options } = message;
   const isMobile = useDevice();
 
-  const onOk = () => {
+  const onOk = (e: any) => {
     if (options.handleOk) {
-      options.handleOk();
+      options.handleOk(e);
     }
     setMessage(null);
   };

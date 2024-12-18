@@ -14,8 +14,8 @@ export default function Alert({
   onCancel,
 }: {
   options: FeedbackOptions;
-  onOk: () => void;
-  onCancel: () => void;
+  onOk: (e: any) => void;
+  onCancel: (e: any) => void;
 }) {
   switch (options.state) {
     case "primary":
@@ -135,8 +135,8 @@ export function MobileAlert({
   onCancel,
 }: {
   options: FeedbackOptions;
-  onOk: () => void;
-  onCancel: () => void;
+  onOk: (e: any) => void;
+  onCancel: (e: any) => void;
 }) {
   switch (options.state) {
     case "primary":
