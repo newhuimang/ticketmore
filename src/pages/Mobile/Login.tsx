@@ -66,7 +66,7 @@ export default function MobileLogin() {
                   <Button
                     variant="text"
                     label="회원가입"
-                    font="p1B"
+                    font="p1R"
                     textColor="PRIMARY"
                     onClick={() =>
                       feedback.toast({ text: "서비스 준비중입니다." })
