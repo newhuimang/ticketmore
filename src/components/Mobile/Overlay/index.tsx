@@ -52,16 +52,18 @@ function Overlay({ children }: { children: React.ReactNode }) {
   // open 시 background scroll 방지
   useEffect(() => {
     if (isOpen) {
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
     } else {
+      document.documentElement.style.overflow = "auto";
       document.body.style.overflow = "auto";
     }
+
     return () => {
+      document.documentElement.style.overflow = "auto";
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
-
-  if (!isOpen) return null;
 
   return (
     <Flex
