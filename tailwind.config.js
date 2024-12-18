@@ -111,6 +111,10 @@ export default {
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
       },
+      height: {
+        safari:
+          "calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom))",
+      },
     },
   },
   plugins: [],
