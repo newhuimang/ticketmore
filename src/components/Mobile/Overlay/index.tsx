@@ -39,7 +39,7 @@ function OverlayControl({ children }: { children: React.ReactNode }) {
     <Flex
       width="100%"
       gap={{ column: 8 }}
-      className="absolute bottom-0 bg-white box-border p-[12px]"
+      className="absolute bottom-0 bg-white box-border z-9999 p-[12px]"
     >
       {children}
     </Flex>
