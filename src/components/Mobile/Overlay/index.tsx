@@ -66,7 +66,7 @@ function Overlay({ children }: { children: React.ReactNode }) {
   return (
     <Flex
       width="100%"
-      className="bg-white fixed top-0 left-0 overflow-y-scroll h-[100vh] box-border z-10"
+      className="bg-white fixed top-0 left-0 overflow-y-scroll h-screen box-border z-10"
     >
       {children}
     </Flex>

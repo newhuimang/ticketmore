@@ -55,13 +55,13 @@ export default function MobileMy({}: {}) {
                   id: "waiting",
                   title: "예매대기",
                   icon: <Cart2 size={16} className="fill-dark-500" />,
-                  contents: <>ㅇ</>,
+                  contents: <></>,
                 },
                 {
                   id: "mo-ticket",
                   title: "모바일티켓",
                   icon: <Phone size={16} className="fill-dark-500" />,
-                  contents: <>ㅇ</>,
+                  contents: <></>,
                 },
               ]}
             />
