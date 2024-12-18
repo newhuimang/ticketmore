@@ -1,16 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 
+import useRecentSearches from "@/store/useSearch";
+
 import Input from "@/components/Form/Input";
 import Flex from "@/components/Flex";
 import { Search } from "react-bootstrap-icons";
 
 export default function MobileSearchbar() {
+  const { addSearch } = useRecentSearches();
   const navigate = useNavigate();
+
   return (
     <Formik
       initialValues={{ search: "" }}
       onSubmit={(values) => {
+        const searchTerm = values.search.trim();
+        console.log(values);
+        if (searchTerm !== "") {
+          addSearch(searchTerm);
+        }
         navigate(`/search?result=${encodeURIComponent(values.search)}`);
       }}
     >
