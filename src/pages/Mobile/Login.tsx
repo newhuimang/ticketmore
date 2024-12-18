@@ -117,7 +117,7 @@ export default function MobileLogin() {
                 label={isSubmitting ? "로그인중입나다" : "로그인"}
                 bgColor="PRIMARY_900"
                 font="p1B"
-                size={50}
+                size={60}
                 disabled={isSubmitting || !isValid || !dirty}
               />
             </Overlay.Control>

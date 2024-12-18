@@ -5,6 +5,7 @@ import MobileIntro from "@/pages/Mobile/Intro";
 import MobileSearch from "@/components/Mobile/Search";
 import MobileCategory from "@/components/Mobile/Category";
 import MobileMy from "./My";
+import { useEffect } from "react";
 
 interface NavList {
   component: React.ReactNode;

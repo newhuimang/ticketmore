@@ -4,14 +4,16 @@ type FeedbackType = "alert" | "toast";
 
 interface FeedbackMessageProps {
   message: { type: FeedbackType; options: FeedbackOptions } | null;
-  setMessage: Dispatch<SetStateAction<{ type: FeedbackType; options: FeedbackOptions } | null>>;
+  setMessage: Dispatch<
+    SetStateAction<{ type: FeedbackType; options: FeedbackOptions } | null>
+  >;
 }
 
 interface FeedbackOptions {
   text: string;
   children?: React.ReactNode;
   okText?: string;
-  handleOk?: () => void;
+  handleOk?: (e: any) => void;
   cancelText?: string;
   handleCancel?: () => void;
   state?: "primary" | "error" | "default";
@@ -22,4 +24,9 @@ interface FeedbackContextType {
   toast: (options: FeedbackOptions) => void;
 }
 
-export type { FeedbackContextType, FeedbackOptions, FeedbackType, FeedbackMessageProps };
+export type {
+  FeedbackContextType,
+  FeedbackOptions,
+  FeedbackType,
+  FeedbackMessageProps,
+};

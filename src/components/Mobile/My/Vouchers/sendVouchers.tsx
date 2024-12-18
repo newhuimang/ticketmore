@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { Formik, Form, Field, FieldProps } from "formik";
+import { Formik, Form } from "formik";
 import Input from "@/components/Form/Input";
 import Button from "@/components/Button";
 import Flex from "@/components/Flex";
@@ -53,58 +53,28 @@ export default function MobileSendVouchers({
           }
         }}
       >
-        {({ isSubmitting, isValid, dirty, setFieldValue, values }) => {
-          const handleInputChange = (
-            index: number,
-            e: React.ChangeEvent<HTMLInputElement>
-          ) => {
-            const newValue = e.target.value;
-
-            const updatedVoucherCode = [
-              values.voucherCode.slice(0, 4),
-              values.voucherCode.slice(4, 8),
-              values.voucherCode.slice(8, 12),
-              values.voucherCode.slice(12, 16),
-            ]
-              .map((value, i) => (i === index ? newValue : value))
-              .join("");
-
-            setFieldValue("voucherCode", updatedVoucherCode);
-          };
-
+        {({ isSubmitting, isValid, dirty }) => {
           return (
             <Form className="w-full h-[100%]">
               <Overlay.Head title={title} />
               <Overlay.Body>
                 <Flex
+                  width={"100%"}
                   direction="column"
                   justify="between"
                   gap={{ row: 16 }}
                   className="px-[12px] pt-[12px] h-[100%]"
                 >
                   <Flex width={"100%"} gap={{ column: 8 }}>
-                    {[0, 1, 2, 3].map((index) => (
-                      <Field key={index} name={`voucherCode${index}`}>
-                        {({ field }: FieldProps) => (
-                          <Input
-                            {...field}
-                            size={40}
-                            name={`voucherCode${index}`}
-                            type="text"
-                            value={values.voucherCode.slice(
-                              index * 4,
-                              (index + 1) * 4
-                            )}
-                            placeholder="xxxx"
-                            onChange={(
-                              e: React.ChangeEvent<HTMLInputElement>
-                            ) => handleInputChange(index, e)}
-                          />
-                        )}
-                      </Field>
-                    ))}
+                    <Input
+                      size={40}
+                      name={"voucherCode"}
+                      type="text"
+                      placeholder="xxxx"
+                    />
                   </Flex>
                   <Flex
+                    width={"100%"}
                     direction="column"
                     gap={{ row: 8 }}
                     className="bg-base-A rounded-[12px] p-[12px]"
@@ -137,7 +107,7 @@ export default function MobileSendVouchers({
                   label="등록"
                   bgColor="PRIMARY_900"
                   font="p2B"
-                  size={50}
+                  size={60}
                   disabled={isSubmitting || !isValid || !dirty}
                 />
               </Overlay.Control>

@@ -30,7 +30,11 @@ export default function MobileHeader() {
       className={`fixed z-10 bg-white p-[12px] ${headerStyle > 10 ? "border-b border-primary-100 shadow-key" : "border-none"}`}
     >
       <h1 className=" text-dark-950">
-        <Link to={"/"} className="flex gap-x-[4px]">
+        <Link
+          to={"/"}
+          className="flex gap-x-[4px]"
+          onClick={() => setIsActive("home")}
+        >
           <span className="text-str2B">Ticket</span>
           <span className="text-str2R">More</span>
         </Link>
