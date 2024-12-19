@@ -12,6 +12,7 @@ function OverlayHead({
   size = 24,
   className = "fill-primary-900",
   title,
+  share,
 }: OverlayHeadProps) {
   const { closeOverlay } = useOverlay();
   return (
@@ -19,6 +20,7 @@ function OverlayHead({
       icon={<ArrowLeft className={className} size={size} />}
       title={title}
       onClick={closeOverlay}
+      share={share}
     />
   );
 }
@@ -27,7 +29,7 @@ function OverlayBody({ children }: { children: React.ReactNode }) {
   return (
     <Flex
       width="100%"
-      className="bg-white box-border mt-[40px] h-[calc(100%-114px)]"
+      className="bg-white box-border mt-[40px] h-[calc(100%-124px)]"
     >
       {children}
     </Flex>

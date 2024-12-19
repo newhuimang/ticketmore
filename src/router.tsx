@@ -2,8 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "@/pages/layout";
 import MobileSearchResult from "./components/Mobile/Search/Result";
 import MobileMainTab from "./pages/Mobile";
+import MobileEvent from "./pages/Mobile/event";
 
-const router = (_isMobile: boolean, isOpen: boolean, content: React.ReactNode) =>
+const router = (
+  _isMobile: boolean,
+  isOpen: boolean,
+  content: React.ReactNode
+) =>
   createBrowserRouter([
     {
       path: "/",
@@ -21,6 +26,10 @@ const router = (_isMobile: boolean, isOpen: boolean, content: React.ReactNode) =
         {
           path: "/search",
           element: <MobileSearchResult />,
+        },
+        {
+          path: "/event",
+          element: <MobileEvent />,
         },
       ],
     },

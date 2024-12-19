@@ -12,7 +12,7 @@ export interface Status {
 }
 
 export interface EventData {
-  id: number;
+  id: string;
   name: string;
   organizer: string;
   image: string;
@@ -73,6 +73,13 @@ export interface UserVouchersList {
   };
 }
 
+export interface UserBooking {
+  id: string;
+  seat_number: string;
+  booking_date: string;
+  isCancel: boolean;
+  events: EventData;
+}
 interface UserPayments {
   type: "CARD" | "ACCOUNT";
   cardType?: "CREDIT" | "DEBIT";
@@ -87,11 +94,6 @@ export interface UserMyInfo {
   points: Points;
   coupons: UserVouchersList;
   gifts: UserVouchersList;
-  bookings: Array<{
-    id: string;
-    seat_number: string;
-    booking_date: string;
-    events: EventData;
-  }>;
+  bookings: UserBooking[];
   payments: UserPayments[];
 }

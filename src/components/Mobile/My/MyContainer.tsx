@@ -1,6 +1,5 @@
 import Divider from "@/components/Divider";
 import Flex from "@/components/Flex";
-import useOverlay from "@/store/useOverlay";
 import { ChevronRight } from "react-bootstrap-icons";
 
 interface Container {
@@ -9,12 +8,11 @@ interface Container {
     id: string;
     icon: React.ReactNode;
     title: string;
-    contents?: React.ReactNode;
+    onClick: (e: any) => void;
   }>;
 }
 
 export default function MobileMyContainer({ list, label }: Container) {
-  const { openOverlay } = useOverlay();
   return (
     <Flex
       width={"100%"}
@@ -22,7 +20,7 @@ export default function MobileMyContainer({ list, label }: Container) {
       gap={{ row: 16 }}
       className="px-[12px]"
     >
-      <p className="text-subtitB text-primary-900 px-[4px]">{label}</p>
+      <p className="text-subtitR text-primary-900 px-[4px]">{label}</p>
       <Flex
         width={"100%"}
         direction="column"
@@ -36,7 +34,7 @@ export default function MobileMyContainer({ list, label }: Container) {
                 key={item.id}
                 justify="between"
                 items="center"
-                onClick={() => openOverlay(item.contents)}
+                onClick={item.onClick}
                 className="py-[16px]"
               >
                 <Flex items="center" gap={{ column: 8 }}>

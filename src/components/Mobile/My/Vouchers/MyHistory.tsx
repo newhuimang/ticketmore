@@ -262,7 +262,7 @@ function HistoryTab({ list }: HistoryTabProps) {
             onClick={() => setHistoryTabActive(tab.values)}
           >
             <span
-              className={`${historyTabActive === tab.values ? "text-p2B text-primary" : "text-p2R"} pb-[4px]`}
+              className={`${historyTabActive === tab.values ? "text-p1B text-primary" : "text-p1R"} pb-[4px]`}
             >
               {tab.label}
             </span>

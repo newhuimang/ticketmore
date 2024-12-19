@@ -1,4 +1,5 @@
 import useAuth from "@/store/useAuth";
+import useOverlay from "@/store/useOverlay";
 
 import Flex from "@/components/Flex";
 import MobileRoot from "@/components/Root/Mobile";
@@ -9,45 +10,12 @@ import {
   Server,
   StarFill,
 } from "react-bootstrap-icons";
-import useOverlay from "@/store/useOverlay";
 import MobileLogin from "@/pages/Mobile/Login";
 import MyHistory from "./MyHistory";
 
-import { useEffect, useState } from "react";
-import { UserMyInfo } from "@/type/type";
-
-export default function MobileMyInfo() {
-  const [user, setUser] = useState<UserMyInfo | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
+export default function MobileMyInfo({ data }: { data: any }) {
   const { auth, isLoggedIn } = useAuth();
   const { openOverlay } = useOverlay();
-
-  useEffect(() => {
-    const fetchUserData = async (): Promise<UserMyInfo> => {
-      try {
-        const response = await fetch("/data/user.json");
-        if (!response.ok) {
-          throw new Error("Failed to fetch user data");
-        }
-        const data: UserMyInfo = await response.json();
-        setUser(data);
-        setLoading(false);
-        return data;
-      } catch (error) {
-        setError("Failed to get user data.");
-        setLoading(false);
-        throw new Error("Failed to get user");
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
   return (
     <MobileRoot className={`bg-gradient-to-br from-[#A7CCF7] to-[#787CFD]`}>
       {/* 이름 영역 */}
@@ -109,13 +77,11 @@ export default function MobileMyInfo() {
               className="text-p1B underline"
               onClick={() => {
                 if (isLoggedIn) {
-                  openOverlay(
-                    <MyHistory type="point" data={user && user.points} />
-                  );
+                  openOverlay(<MyHistory type="point" data={data?.points} />);
                 }
               }}
             >
-              {isLoggedIn ? user?.points.totalCount : "???"}
+              {isLoggedIn ? data?.points.totalCount : "???"}
             </p>
             <span className="text-p2R">P</span>
           </Flex>
@@ -144,11 +110,11 @@ export default function MobileMyInfo() {
               className="text-p1B text-primary-700 underline"
               onClick={() => {
                 if (isLoggedIn) {
-                  openOverlay(<MyHistory type="coupon" data={user?.coupons} />);
+                  openOverlay(<MyHistory type="coupon" data={data?.coupons} />);
                 }
               }}
             >
-              {user ? user.coupons.totalCount : 0}
+              {data?.coupons ? data.coupons.totalCount : 0}
             </p>
           </Flex>
 
@@ -167,11 +133,11 @@ export default function MobileMyInfo() {
               className="text-p1B text-primary-700 underline"
               onClick={() => {
                 if (isLoggedIn) {
-                  openOverlay(<MyHistory type="gifts" data={user?.gifts} />);
+                  openOverlay(<MyHistory type="gifts" data={data?.gifts} />);
                 }
               }}
             >
-              {user ? user.gifts.totalCount : 0}
+              {data?.gifts ? data.gifts.totalCount : 0}
             </p>
           </Flex>
         </Flex>

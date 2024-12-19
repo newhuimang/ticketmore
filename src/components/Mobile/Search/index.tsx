@@ -78,7 +78,7 @@ export default function MobileSearch() {
             </Flex>
 
             <div
-              className="absolute top-1/2 right-0 translate-x-[-50%] translate-y-[-50%] bg-cover bg-no-repeat w-[13%] h-0 pt-[13%] shadow-basic"
+              className="absolute top-1/2 right-0 translate-y-[-50%] bg-cover bg-no-repeat w-[13%] h-0 pt-[13%] shadow-basic"
               style={{ backgroundImage: `url('/assets/starbucks.png')` }}
             />
           </Flex>

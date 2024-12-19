@@ -5,9 +5,11 @@ import Button from "@/components/Button";
 import Flex from "@/components/Flex";
 
 import { XLg } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function MobileRecentSearch() {
   const { recentSearches, removeSearch, clearSearches } = useRecentSearches();
+  const navigate = useNavigate();
   const { alert } = useFeedback();
 
   return (
@@ -32,17 +34,21 @@ export default function MobileRecentSearch() {
         )}
       </Flex>
 
-      <Flex width={"100%"} gap={{ row: 16, column: 16 }} className="flex-wrap">
+      <Flex width={"100%"} gap={{ row: 8, column: 16 }} className="flex-wrap">
         {recentSearches.map((item, i) => {
           return (
             <Flex
               key={i}
               items="center"
               gap={{ column: 16 }}
-              className="h-[32px] min-w-[70px] bg-base-A px-[12px] rounded-full"
-              onClick={() => alert({ text: "넘어가기" })}
+              className="h-[32px] min-w-[70px] max-w-full bg-base-A px-[12px] rounded-full"
+              onClick={() =>
+                navigate(`/search?result=${encodeURIComponent(item)}`)
+              }
             >
-              <span className="text-p1Rt text-dark-500">{item}</span>
+              <span className="text-p1Rt text-dark-500 w-full truncate">
+                {item}
+              </span>
               <Button
                 size={12}
                 variant="icon"

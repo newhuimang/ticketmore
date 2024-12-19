@@ -7,25 +7,38 @@ interface TabItem {
 }
 
 interface TabProps {
+  default?: number;
+  position?: "left" | "center" | "right";
   items: TabItem[];
-  onClick?: () => void;
+  onClick?: (tabName: string) => void;
 }
 
-export default function MobileTab({ items }: TabProps) {
-  const [activeTab, setActiveTab] = useState<number>(0);
+export default function MobileTab({
+  default: defaultTab = 0,
+  position = "left",
+  items,
+  onClick,
+}: TabProps) {
+  const [activeTab, setActiveTab] = useState<number>(defaultTab);
 
-  const handleTabClick = (index: number) => {
+  const handleTabClick = (index: number, tabName: string) => {
     setActiveTab(index);
+    onClick && onClick(tabName);
+  };
+
+  const tabPosition: React.CSSProperties = {
+    marginLeft: ["right", "center"].includes(position) ? "auto" : undefined,
+    marginRight: ["left", "center"].includes(position) ? "auto" : undefined,
   };
 
   return (
     <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
-      <Flex width={"100%"} gap={{ column: 16 }}>
+      <Flex width={"content"} gap={{ column: 16 }} style={tabPosition}>
         {items.map((item, index) => (
           <button
             key={index}
-            onClick={() => handleTabClick(index)}
-            className={`text-p1B ${activeTab === index ? "text-primary" : "text-dark-300"}`}
+            onClick={() => handleTabClick(index, item.name)}
+            className={`${activeTab === index ? "text-primary text-p1B" : "text-dark-300 text-p1R"}`}
           >
             {item.name}
           </button>

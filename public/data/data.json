@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "A1bC2dEfGh",
     "name": "뮤지컬<시카고>",
     "organizer": "-",
     "image": "/assets/dummy_03.png",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "id": 2,
+    "id": "J3kL4mNoPq",
     "name": "서울숲재즈페스티벌 2024",
     "organizer": "-",
     "image": "/assets/dummy_04.png",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "id": 3,
+    "id": "R5sT6uVwXy",
     "name": "르 스페이스 - Le Space INPIRE",
     "organizer": "-",
     "image": "/assets/dummy_02.png",
@@ -54,7 +54,7 @@
     }
   },
   {
-    "id": 4,
+    "id": "U7vW8xYzZ1",
     "name": "국립극단<햄릿>",
     "organizer": "국립극단",
     "image": "/assets/dummy_01.png",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "id": 5,
+    "id": "X2yZ3aB4cD",
     "name": "2024 IU THE WINNING",
     "organizer": "아이유",
     "image": "/assets/dummy_05.png",
@@ -90,7 +90,7 @@
     }
   },
   {
-    "id": 6,
+    "id": "D5eF6gH7iJ",
     "name": "잔나비 콘서트<판타스틱 올드 패션드>",
     "organizer": "잔나비",
     "image": "/assets/dummy_00.png",

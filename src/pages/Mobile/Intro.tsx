@@ -57,8 +57,14 @@ export default function MobileIntro() {
           <MobileTab
             items={[
               { name: "공연", content: <MobileWeeklyRank /> },
-              { name: "스포츠", content: <MobileNodataMessage /> },
-              { name: "전시 · 관람", content: <MobileNodataMessage /> },
+              {
+                name: "스포츠",
+                content: <MobileNodataMessage msg="서비스 준비중입니다." />,
+              },
+              {
+                name: "전시 · 관람",
+                content: <MobileNodataMessage msg="서비스 준비중입니다." />,
+              },
             ]}
           />
         </Root>

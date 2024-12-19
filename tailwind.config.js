@@ -104,11 +104,17 @@ export default {
       },
       animation: {
         fadeIn: "fadeIn 0.3s ease-out",
+        flip: "flip .8s ease-in-out",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0", transform: "translateX(-100%)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        flip: {
+          "0%": { transform: "scaleY(1) translateY(0)" },
+          "50%": { transform: "scaleY(0) translateY(10%)" },
+          "100%": { transform: "scaleY(1) translateY(0)" },
         },
       },
       height: {

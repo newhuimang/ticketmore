@@ -5,7 +5,7 @@ import { EventData } from "@/type/type";
 import Flex from "@/components/Flex";
 import Divider from "@/components/Divider";
 import Button from "@/components/Button";
-import { ThreeDots } from "react-bootstrap-icons";
+import MobileNodataMessage from "@/components/NoData/Message";
 
 export default function MobileWeeklyRank() {
   const [data, setData] = useState<EventData[]>([]);
@@ -30,24 +30,21 @@ export default function MobileWeeklyRank() {
 
   if (loading) {
     return (
-      <Flex
-        direction="column"
-        items="center"
-        justify="center"
-        className="h-[180px]"
-      >
-        <ThreeDots size={20} className="fill-primary-300" />
-        <div className="text-p2B text-primary-300">Loading</div>
+      <Flex width={"100%"} direction="column" gap={{ row: 32 }}>
+        <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
+          <WeeklyRankSkeleton />
+          <Divider color="bg-dark-50" />
+          <WeeklyRankSkeleton />
+          <Divider color="bg-dark-50" />
+          <WeeklyRankSkeleton />
+        </Flex>
+        <Button font="p1B" size={50} label="더보기" disabled />
       </Flex>
     );
   }
 
   if (error) {
-    return (
-      <Flex width={"100%"} className="mx-auto">
-        {error}
-      </Flex>
-    );
+    return <MobileNodataMessage msg={error} />;
   }
 
   return (
@@ -106,6 +103,36 @@ export default function MobileWeeklyRank() {
         })}
       </Flex>
       <Button font="p1B" size={50} bgColor="PRIMARY_900" label="더보기" />
+    </Flex>
+  );
+}
+
+function WeeklyRankSkeleton() {
+  return (
+    <Flex width={"100%"} gap={{ column: 8 }}>
+      <div className="relative rounded-[12px] rounded-ss-none min-w-[96px] h-[144px] bg-dark-100 animate-pulse" />
+      <Flex
+        width={"100%"}
+        direction="column"
+        justify="between"
+        className="px-[12px] h-[144px] bg-base-A rounded-[12px] py-[8px]"
+      >
+        <Flex width={"100%"} direction="column" gap={{ row: 4 }}>
+          <div className="w-5/6 h-[16px] rounded-[4px] bg-dark-100 animate-pulse" />
+          <div className="w-2/5 h-[14px] rounded-[4px] bg-dark-100 animate-pulse" />
+        </Flex>
+
+        <Flex width={"100%"} direction="column" gap={{ row: 4 }}>
+          <div className="w-1/5 h-[14px] rounded-[4px] bg-dark-100 animate-pulse" />
+          <div className="w-2/3 h-[14px] rounded-[4px] bg-dark-100 animate-pulse" />
+        </Flex>
+
+        <Flex width={"100%"} items="center" gap={{ column: 8 }}>
+          <div className="w-1/3 h-[14px] rounded-[4px] bg-dark-100 animate-pulse" />
+          <Divider type="vertical" height={14} />
+          <div className="w-1/4 h-[14px] rounded-[4px] bg-dark-100 animate-pulse" />
+        </Flex>
+      </Flex>
     </Flex>
   );
 }

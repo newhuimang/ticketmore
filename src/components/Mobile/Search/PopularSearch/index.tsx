@@ -8,6 +8,7 @@ export default function MobilePopularSearch() {
     "코리아 시리즈",
     "시카고",
   ];
+
   return (
     <Flex
       width={"100%"}
@@ -33,7 +34,13 @@ export default function MobilePopularSearch() {
         <Flex width={"calc(100% - 59px)"} direction="column" gap={{ row: 16 }}>
           {keyword.map((item, i) => {
             return (
-              <Flex width={"100%"} key={i} items="center" className="h-[32px]">
+              <Flex
+                width={"100%"}
+                key={i}
+                items="center"
+                className={`h-[32px] animate-flip`}
+                style={{ animationDelay: `${i * 2}s` }}
+              >
                 <p className="w-full text-p1R text-ellipsis overflow-hidden whitespace-nowrap">
                   {item}
                 </p>

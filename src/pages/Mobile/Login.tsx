@@ -114,7 +114,12 @@ export default function MobileLogin() {
               <Button
                 type="submit"
                 width="100%"
-                label={isSubmitting ? "로그인중입나다" : "로그인"}
+                label={
+                  <Flex gap={{ column: 16 }}>
+                    <div className="animate-spin h-5 w-5 border-l-[1.5px] border-t-[1.5px] rounded-full" />
+                    로그인중
+                  </Flex>
+                }
                 bgColor="PRIMARY_900"
                 font="p1B"
                 size={60}

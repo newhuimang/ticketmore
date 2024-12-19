@@ -2,6 +2,7 @@ interface OverlayHeadProps {
   size?: string | number;
   className?: string;
   title?: string;
+  share?: boolean;
 }
 
 interface OverlayContextType {

@@ -13,13 +13,16 @@ import { AlarmFill } from "react-bootstrap-icons";
 import { TimelineProps } from "@/type/type";
 import useOverlay from "@/store/useOverlay";
 import MobileLogin from "@/pages/Mobile/Login";
+import MobileNodataMessage from "@/components/NoData/Message";
 
 export default function MobileTimeline() {
-  const { isLoggedIn } = useAuth();
-  const feedback = useFeedback();
-  const { openOverlay } = useOverlay();
-
   const [data, setData] = useState<TimelineProps[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const { isLoggedIn } = useAuth();
+  const { openOverlay } = useOverlay();
+  const feedback = useFeedback();
 
   const toggleAlarm = (parentId: number, eventId: string) => {
     setData((prevData) =>
@@ -58,9 +61,42 @@ export default function MobileTimeline() {
   useEffect(() => {
     axios
       .get("./data/timeline.json")
-      .then((res) => setData(res.data))
-      .catch((err) => console.error("Error", err));
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error", err);
+        setError("데이터를 불러오는 중에 오류가 발생했습니다.");
+        setLoading(false);
+      });
   }, []);
+
+  if (loading)
+    return (
+      <>
+        <Flex
+          width={"100%"}
+          direction="column"
+          className="max-h-[80vh] overflow-y-auto"
+        >
+          <div className="w-full relative">
+            <TimelineSkeleton />
+            <TimelineSkeleton />
+            <TimelineSkeleton />
+            <div className="absolute bg-gradient-to-b from-transparent to-white w-full h-[50px] bottom-0" />
+          </div>
+        </Flex>
+      </>
+    );
+  if (error)
+    return (
+      <>
+        <Flex width={"100%"} className="px-[12px]">
+          <MobileNodataMessage msg={error} />
+        </Flex>
+      </>
+    );
 
   return (
     <Flex
@@ -171,5 +207,62 @@ export default function MobileTimeline() {
         <div className="absolute bg-gradient-to-b from-transparent to-white w-full h-[50px] bottom-0" />
       </div>
     </Flex>
+  );
+}
+
+function TimelineSkeleton() {
+  return (
+    <div className="w-full relative">
+      <Flex width={"100%"} direction="column">
+        {/* 타임라벨 */}
+        <Flex items="center" gap={{ column: 8 }}>
+          <Dot size={5} bgColor="DARK" />
+          <div className="w-[136px] h-[32px] rounded-full bg-dark-50 animate-pulse" />
+        </Flex>
+
+        <Flex width={5} justify="center">
+          <div className="border-dashed border-dark-300 border h-[16px]"></div>
+        </Flex>
+
+        {/* e */}
+        <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
+          <Flex width={"100%"} items="stretch" gap={{ column: 8 }}>
+            {/* thumbnail */}
+            <div className="bg-dark-100 rounded-[12px] min-w-[100px] w-[100px] h-[100px] animate-pulse" />
+
+            {/* info */}
+            <Flex
+              width={"100%"}
+              items="stretch"
+              className="rounded-[12px] overflow-hidden bg-dark-50"
+            >
+              <Flex
+                width={"100%"}
+                direction="column"
+                justify="between"
+                gap={{ row: 4 }}
+                className="p-[16px]"
+              >
+                <div className="w-5/6 h-[16px] rounded-[4px] bg-dark-100 animate-pulse" />
+                <div className="w-3/4 h-[14px] rounded-[4px] bg-dark-100 animate-pulse" />
+              </Flex>
+
+              <Flex
+                width={60}
+                items="center"
+                justify="center"
+                className={`bg-dark-100 min-w-[32px] animate-pulse`}
+              >
+                <AlarmFill className={`fill-white`} />
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex>
+
+        <Flex width={5} justify="center">
+          <div className="border-dashed border-dark-300 border h-[40px]"></div>
+        </Flex>
+      </Flex>
+    </div>
   );
 }

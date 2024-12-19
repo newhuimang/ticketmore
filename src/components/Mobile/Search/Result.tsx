@@ -11,12 +11,12 @@ import { ThreeDots } from "react-bootstrap-icons";
 import { EventData } from "@/type/type";
 
 export default function MobileSearchResult() {
-  const [searchParams] = useSearchParams();
-  const result = searchParams.get("result");
-
   const [data, setData] = useState<EventData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const [searchParams] = useSearchParams();
+  const result = searchParams.get("result");
 
   useEffect(() => {
     const fetchData = async () => {

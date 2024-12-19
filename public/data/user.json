@@ -83,6 +83,7 @@
       "id": "B00240902",
       "seat_number": "A10",
       "booking_date": "2024-09-02",
+      "isCancel": false,
       "events": {
         "id": 1,
         "name": "뮤지컬<시카고>",
