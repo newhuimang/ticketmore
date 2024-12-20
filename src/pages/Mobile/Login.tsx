@@ -115,10 +115,14 @@ export default function MobileLogin() {
                 type="submit"
                 width="100%"
                 label={
-                  <Flex gap={{ column: 16 }}>
-                    <div className="animate-spin h-5 w-5 border-l-[1.5px] border-t-[1.5px] rounded-full" />
-                    로그인중
-                  </Flex>
+                  isSubmitting ? (
+                    <Flex gap={{ column: 16 }}>
+                      <div className="animate-spin h-5 w-5 border-l-[1.5px] border-t-[1.5px] rounded-full" />
+                      로그인중
+                    </Flex>
+                  ) : (
+                    "로그인"
+                  )
                 }
                 bgColor="PRIMARY_900"
                 font="p1B"

@@ -9,6 +9,7 @@ export default function Input({
   type,
   placeholder,
   size = 52,
+  className,
 }: InputProps) {
   // const [isClicked, setIsClicked] = useState(false);
   // ${isClicked ? "border-primary" : "border-primary-100"}
@@ -38,7 +39,7 @@ export default function Input({
           type={type}
           value={value}
           placeholder={placeholder}
-          className="w-full border-none focus:outline-none text-p1R placeholder:text-p1R"
+          className={`w-full border-none focus:outline-none text-p1R placeholder:text-p1R ${className}`}
         />
       </Flex>
       <ErrorMessage

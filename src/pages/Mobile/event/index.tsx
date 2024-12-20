@@ -139,11 +139,11 @@ export default function MobileEvent() {
               <p className="text-p2R text-dark-300">관람등급</p>
             </Flex>
             <Flex direction="column" gap={{ row: 4 }}>
-              <p className="text-p2R text-dark-500">{data.event.venue}</p>
-              <p className="text-p2R text-dark-500">
+              <p className="text-p2R">{data.event.venue}</p>
+              <p className="text-p2R">
                 {data.event.startDate} - {data.event.startDate}
               </p>
-              <p className="text-p2R text-dark-500">{data.event.ageLimit}</p>
+              <p className="text-p2R">{data.event.ageLimit}</p>
             </Flex>
           </Flex>
         </Flex>

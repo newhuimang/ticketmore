@@ -5,6 +5,7 @@ interface InputProps {
   value?: any;
   placeholder?: string;
   size?: 24 | 32 | 40 | 52 | 60;
+  className?: string;
 }
 
 export type { InputProps };

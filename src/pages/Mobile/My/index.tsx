@@ -74,7 +74,7 @@ export default function MobileMy({}: {}) {
           width={"100%"}
           direction="column"
           gap={{ row: 24 }}
-          className="mt-[52px] pb-[16px] bg-base-A"
+          className="mt-[52px] pb-[32px] bg-base-A"
         >
           <MobileMyInfo data={user} />
 
@@ -194,44 +194,47 @@ export default function MobileMy({}: {}) {
                 },
               ]}
             />
-            <Flex width={"100%"} className="px-[12px] mt-[12px]">
-              <Flex
-                width={"100%"}
-                direction="column"
-                className="px-[12px] shadow-basic bg-white rounded-[12px]"
-              >
-                {/* 로그아웃 */}
-                <Flex
-                  items="center"
-                  gap={{ column: 8 }}
-                  className="py-[12px]"
-                  onClick={() => {
-                    logout();
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  <BoxArrowRight size={16} className="fill-dark-500" />
-                  <p className="text-p1R">로그아웃</p>
-                </Flex>
 
-                <Divider color="bg-base-A" />
-
-                {/* 회원탈퇴 */}
+            {isLoggedIn && (
+              <Flex width={"100%"} className="px-[12px] mt-[12px]">
                 <Flex
-                  items="center"
-                  gap={{ column: 8 }}
-                  className="py-[12px]"
-                  onClick={() => {
-                    feedbacck.toast({
-                      text: "서비스 준비중입니다.",
-                    });
-                  }}
+                  width={"100%"}
+                  direction="column"
+                  className="px-[12px] shadow-basic bg-white rounded-[12px]"
                 >
-                  <DoorOpen size={16} className="fill-dark-500" />
-                  <p className="text-p1R">회원탈퇴</p>
+                  {/* 로그아웃 */}
+                  <Flex
+                    items="center"
+                    gap={{ column: 8 }}
+                    className="py-[12px]"
+                    onClick={() => {
+                      logout();
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    <BoxArrowRight size={16} className="fill-dark-500" />
+                    <p className="text-p1R">로그아웃</p>
+                  </Flex>
+
+                  <Divider color="bg-base-A" />
+
+                  {/* 회원탈퇴 */}
+                  <Flex
+                    items="center"
+                    gap={{ column: 8 }}
+                    className="py-[12px]"
+                    onClick={() => {
+                      feedbacck.toast({
+                        text: "서비스 준비중입니다.",
+                      });
+                    }}
+                  >
+                    <DoorOpen size={16} className="fill-dark-500" />
+                    <p className="text-p1R">회원탈퇴</p>
+                  </Flex>
                 </Flex>
               </Flex>
-            </Flex>
+            )}
           </Flex>
         </Flex>
 

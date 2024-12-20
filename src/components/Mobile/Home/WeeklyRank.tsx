@@ -6,11 +6,15 @@ import Flex from "@/components/Flex";
 import Divider from "@/components/Divider";
 import Button from "@/components/Button";
 import MobileNodataMessage from "@/components/NoData/Message";
+import { ArrowRightCircleFill } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function MobileWeeklyRank() {
   const [data, setData] = useState<EventData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +58,7 @@ export default function MobileWeeklyRank() {
           return (
             <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
               <Flex key={item.id} width={"100%"} gap={{ column: 8 }}>
+                {/* 썸네일 */}
                 <div
                   className="relative rounded-[12px] rounded-ss-none min-w-[96px] h-[144px] bg-cover bg-no-repeat"
                   style={{ backgroundImage: `url(${item.image})` }}
@@ -67,32 +72,48 @@ export default function MobileWeeklyRank() {
                     {index + 1}
                   </Flex>
                 </div>
+
+                {/* 카드 */}
                 <Flex
                   width={"100%"}
-                  direction="column"
+                  items="stretch"
                   justify="between"
                   className="px-[12px] h-[144px] bg-base-A rounded-[12px] py-[8px]"
                 >
-                  <Flex direction="column">
-                    <p className="text-p1B">{item.name}</p>
-                    <span className="text-p2R text-dark-300">
-                      {item.event.startDate} {item.event.startDate}
-                    </span>
+                  {/* info */}
+                  <Flex width={"100%"} direction="column" justify="between">
+                    <Flex direction="column">
+                      <p className="text-p1B">{item.name}</p>
+                      <span className="text-p2R text-dark-300">
+                        {item.event.startDate} {item.event.startDate}
+                      </span>
+                    </Flex>
+
+                    <Flex direction="column">
+                      <p className="text-p2R">{item.organizer}</p>
+                      <p className="text-p2R">{item.event.venue}</p>
+                    </Flex>
+
+                    <Flex items="center" gap={{ column: 8 }}>
+                      <span className="text-p2R text-dark-300">
+                        {item.category}
+                      </span>
+                      <Divider type="vertical" height={14} />
+                      <span className="text-p2R text-dark-300">
+                        {item.event.ageLimit}
+                      </span>
+                    </Flex>
                   </Flex>
 
-                  <Flex direction="column">
-                    <p className="text-p2R">{item.organizer}</p>
-                    <p className="text-p2R">{item.event.venue}</p>
-                  </Flex>
-
-                  <Flex items="center" gap={{ column: 8 }}>
-                    <span className="text-p2R text-dark-300">
-                      {item.category}
-                    </span>
-                    <Divider type="vertical" height={14} />
-                    <span className="text-p2R text-dark-300">
-                      {item.event.ageLimit}
-                    </span>
+                  {/* 바로가기 아이콘 */}
+                  <Flex
+                    items="end"
+                    onClick={() => navigate(`/event?con=${item.id}`)}
+                  >
+                    <ArrowRightCircleFill
+                      size={32}
+                      className="fill-dark-200 hover:fill-primary"
+                    />
                   </Flex>
                 </Flex>
               </Flex>

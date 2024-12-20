@@ -76,7 +76,7 @@ export default function MobileSearchResult() {
         <MobileSearchbar />
 
         {filteredData.length === 0 ? (
-          <p className="text-center">검색 결과가 없습니다.</p>
+          <p className="text-center pt-[16px]">검색 결과가 없습니다.</p>
         ) : (
           <ul>
             {filteredData.map((item) => (

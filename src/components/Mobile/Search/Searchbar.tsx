@@ -25,7 +25,12 @@ export default function MobileSearchbar() {
     >
       <Form className="w-full">
         <Flex width={"100%"} items="center" className="relative mx-auto">
-          <Input name="search" type="text" placeholder="검색어를 입력하세요" />
+          <Input
+            name="search"
+            type="text"
+            placeholder="검색어를 입력하세요"
+            className="pr-[30px]"
+          />
           <button
             type="submit"
             className={`w-[24px] h-[24px] bg-white absolute flex justify-center items-center top-1/2 right-0 translate-x-[-12px] translate-y-[-50%]`}
