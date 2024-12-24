@@ -23,7 +23,7 @@ export default function MobileWeeklyRank() {
         setData(res.data);
       } catch (err) {
         console.error("Error fetching data", err);
-        setError("데이터를 가져오는 데 실패했습니다.");
+        setError("데이터를 불러오는 중에 오류가 발생했습니다.");
       } finally {
         setLoading(false);
       }
@@ -85,7 +85,10 @@ export default function MobileWeeklyRank() {
                     <Flex direction="column">
                       <p className="text-p1B">{item.name}</p>
                       <span className="text-p2R text-dark-300">
-                        {item.event.startDate} {item.event.startDate}
+                        {item.event.startDate} ~{" "}
+                        {item.event.endDate === "9999.12.31"
+                          ? ""
+                          : item.event.endDate}
                       </span>
                     </Flex>
 

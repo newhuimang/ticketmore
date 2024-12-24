@@ -115,8 +115,12 @@ export default function MobilePromotion() {
                         gap={{ column: 8 }}
                         className="text-span1R"
                       >
-                        <span>{items.event.startDate}</span>-
-                        <span>{items.event.endDate}</span>
+                        <span>{items.event.startDate}</span>~
+                        <span>
+                          {items.event.endDate === "9999.12.31"
+                            ? ""
+                            : items.event.endDate}
+                        </span>
                       </Flex>
                       <Flex items="center" gap={{ column: 8 }}>
                         <span className="text-span1R text-white">

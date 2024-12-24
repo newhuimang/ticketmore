@@ -21,7 +21,7 @@ export default function MobileCategory() {
   const categoryList: CateProps[] = [
     {
       label: "공연",
-      link: "/performance",
+      link: "perf",
       list: [
         { subtitle: "콘서트", subLink: "/concert" },
         { subtitle: "뮤지컬", subLink: "/musical" },
@@ -32,7 +32,7 @@ export default function MobileCategory() {
     },
     {
       label: "스포츠",
-      link: "/sports",
+      link: "sports",
       list: [
         { subtitle: "야구", subLink: "/baseball" },
         { subtitle: "축구", subLink: "/football" },
@@ -44,7 +44,7 @@ export default function MobileCategory() {
     },
     {
       label: "전시/관람",
-      link: "/exh-view",
+      link: "exh-view",
       list: [
         { subtitle: "행사", subLink: "/events" },
         { subtitle: "뮤지엄", subLink: "/museum" },

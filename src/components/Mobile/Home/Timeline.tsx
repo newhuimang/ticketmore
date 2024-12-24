@@ -67,7 +67,7 @@ export default function MobileTimeline() {
       })
       .catch((err) => {
         console.error("Error", err);
-        setError("데이터를 불러오는 중에 오류가 발생했습니다.");
+        setError("불러오는 중에 오류가 발생했습니다.");
         setLoading(false);
       });
   }, []);

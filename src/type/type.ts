@@ -3,6 +3,14 @@ export interface EventDetails {
   endDate: string;
   venue: string;
   ageLimit: string;
+  notice: string;
+  discount: string | null;
+  ticketTypes: Array<{
+    type: string;
+    price: number;
+    description: string;
+  }>;
+  max: number;
 }
 
 export interface Status {

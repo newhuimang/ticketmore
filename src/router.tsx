@@ -3,6 +3,7 @@ import Layout from "@/pages/layout";
 import MobileSearchResult from "./components/Mobile/Search/Result";
 import MobileMainTab from "./pages/Mobile";
 import MobileEvent from "./pages/Mobile/event";
+import MobilePerformance from "./pages/Mobile/category/perf";
 
 const router = (
   _isMobile: boolean,
@@ -30,6 +31,10 @@ const router = (
         {
           path: "/event",
           element: <MobileEvent />,
+        },
+        {
+          path: "/perf",
+          element: <MobilePerformance />,
         },
       ],
     },

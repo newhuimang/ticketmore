@@ -11,6 +11,7 @@ import { ArrowLeft } from "react-bootstrap-icons";
 
 import { EventData } from "@/type/type";
 import Chip from "@/components/Chip";
+import { formatNumberWithComma } from "@/components/Mobile/My/Vouchers/Utils";
 
 export default function MobileEvent() {
   const [data, setData] = useState<EventData | null>();
@@ -117,33 +118,97 @@ export default function MobileEvent() {
         <Flex
           width={"100%"}
           direction="column"
-          gap={{ row: 16 }}
+          gap={{ row: 32 }}
           className="px-[12px] py-[32px] bg-white"
         >
-          <Flex gap={{ column: 16 }}>
-            <h3 className="text-subtitB text-primary-900">{data.name}</h3>
-            {data.status.early === true && (
-              <Chip label="얼리특가" bgColor="STATE_Y" />
-            )}
+          <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
+            <Flex gap={{ column: 16 }}>
+              <h3 className="text-subtitB text-primary-900">{data.name}</h3>
+              {data.status.early === true && (
+                <Chip label="얼리특가" bgColor="STATE_Y" />
+              )}
+            </Flex>
+
+            <Flex
+              width={"100%"}
+              items="center"
+              gap={{ column: 16 }}
+              className="bg-base-A p-[12px] rounded-[12px]"
+            >
+              <Flex direction="column" gap={{ row: 4 }}>
+                <p className="text-p2R text-dark-300">장소</p>
+                <p className="text-p2R text-dark-300">기간</p>
+                <p className="text-p2R text-dark-300">관람등급</p>
+              </Flex>
+              <Flex direction="column" gap={{ row: 4 }}>
+                <p className="text-p2R">{data.event.venue}</p>
+                <p className="text-p2R">
+                  {data.event.startDate} ~ {data.event.endDate}
+                </p>
+                <p className="text-p2R">{data.event.ageLimit}</p>
+              </Flex>
+            </Flex>
           </Flex>
 
-          <Flex
-            width={"100%"}
-            items="center"
-            gap={{ column: 16 }}
-            className="bg-base-A p-[12px] rounded-[12px]"
-          >
-            <Flex direction="column" gap={{ row: 4 }}>
-              <p className="text-p2R text-dark-300">장소</p>
-              <p className="text-p2R text-dark-300">기간</p>
-              <p className="text-p2R text-dark-300">관람등급</p>
-            </Flex>
-            <Flex direction="column" gap={{ row: 4 }}>
-              <p className="text-p2R">{data.event.venue}</p>
-              <p className="text-p2R">
-                {data.event.startDate} - {data.event.startDate}
-              </p>
-              <p className="text-p2R">{data.event.ageLimit}</p>
+          <Flex width={"100%"} direction="column" gap={{ row: 8 }}>
+            <p className="text-p1B">공지사항</p>
+            <pre className="text-p2R text-wrap px-[12px]">
+              {data.event.notice}
+            </pre>
+          </Flex>
+
+          <Flex width={"100%"} direction="column" gap={{ row: 8 }}>
+            <p className="text-p1B">할인정보</p>
+            <pre className="text-p2R text-wrap px-[12px]">
+              {data.event.discount != null && data.event.discount}
+            </pre>
+          </Flex>
+
+          <Flex width={"100%"} direction="column" gap={{ row: 8 }}>
+            <p className="text-p1B">가격정보</p>
+            <Flex
+              width={"100%"}
+              direction="column"
+              gap={{ row: 16 }}
+              className="px-[12px]"
+            >
+              {data.event.ticketTypes &&
+                data.event.ticketTypes.map((ticket, idx) => {
+                  return (
+                    <>
+                      <Flex
+                        key={idx}
+                        width={"100%"}
+                        direction="column"
+                        gap={{ row: 4 }}
+                      >
+                        <Flex
+                          width={"100%"}
+                          justify="between"
+                          items="center"
+                          gap={{ column: 24 }}
+                        >
+                          <p className="text-nowrap text-p2R text-primary-900 w-1/3">
+                            {ticket.type}
+                          </p>
+
+                          <div className="border-dashed border-t w-full border-dark-100" />
+
+                          <Flex items="end" gap={{ column: 4 }}>
+                            <p className="text-p1B">
+                              {formatNumberWithComma(ticket.price)}
+                            </p>
+                            <p className="text-p2R">원</p>
+                          </Flex>
+                        </Flex>
+
+                        <span className="text-p2R text-dark-300">
+                          {ticket.description}
+                        </span>
+                      </Flex>
+                    </>
+                  );
+                })}
             </Flex>
           </Flex>
         </Flex>

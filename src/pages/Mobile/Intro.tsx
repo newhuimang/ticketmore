@@ -37,7 +37,7 @@ export default function MobileIntro() {
           >
             <input
               placeholder="검색어를 입력하세요"
-              className="w-full border border-primary-300 pl-[12px] h-[52px] rounded-[8px] focus:outline-none text-p1Rt placeholder:text-dark-300 placeholder:text-p1Rt"
+              className="w-full border border-primary-300 pl-[12px] h-[40px] rounded-[8px] focus:outline-none text-p1Rt placeholder:text-dark-300 placeholder:text-p1Rt"
             />
 
             <button
