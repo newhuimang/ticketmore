@@ -1,7 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
 
-import useOverlay from "@/store/useOverlay";
-
 import Overlay from "@/components/Mobile/Overlay";
 import MobileSendVouchers from "./sendVouchers";
 import { HistoryNodata } from "./HistoryNodata";
