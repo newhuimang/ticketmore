@@ -1,10 +1,12 @@
 import Flex from "@/components/Flex";
+import { useNavigate } from "react-router-dom";
 
 export default function MobilePopularSearch() {
+  const navigate = useNavigate();
   const keyword = [
     "기아 타이거즈",
     "아이유",
-    "서울 제즈 페스티벌 서울 제즈 페스티벌 서울 제즈 페스티벌 서울 제즈 페스티벌",
+    "서울숲 제즈 페스티벌 서울숲 제즈 페스티벌 서울숲 제즈 페스티벌 서울숲 제즈 페스티벌",
     "코리아 시리즈",
     "시카고",
   ];
@@ -40,6 +42,9 @@ export default function MobilePopularSearch() {
                 items="center"
                 className={`h-[32px] animate-flip`}
                 style={{ animationDelay: `${i * 2}s` }}
+                onClick={() => {
+                  navigate(`/search?result=${encodeURIComponent(item)}`);
+                }}
               >
                 <p className="w-full text-p1R text-ellipsis overflow-hidden whitespace-nowrap">
                   {item}

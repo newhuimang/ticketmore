@@ -72,7 +72,6 @@ export default function MobileFooter() {
           </Flex>
         </Flex>
       </Flex>
-      <div className={`w-full h-[74px]`}></div>
     </>
   );
 }

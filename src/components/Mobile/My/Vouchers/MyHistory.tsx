@@ -1,12 +1,18 @@
-import Divider from "@/components/Divider";
-import Flex from "@/components/Flex";
-import Overlay from "@/components/Mobile/Overlay";
 import { Fragment, useEffect, useState } from "react";
-import { AvailableNodata, HistoryNodata } from "./HistoryNodata";
+
 import useOverlay from "@/store/useOverlay";
-import { Points, UserVouchersList } from "@/type/type";
+
+import Overlay from "@/components/Mobile/Overlay";
 import MobileSendVouchers from "./sendVouchers";
+import { HistoryNodata } from "./HistoryNodata";
+
+import Flex from "@/components/Flex";
+import Divider from "@/components/Divider";
+
+import { Points, UserVouchersList } from "@/type/type";
 import { formatNumberWithComma } from "./Utils";
+
+import { PlusCircleFill } from "react-bootstrap-icons";
 
 export default function MyHistory({
   type,
@@ -15,8 +21,11 @@ export default function MyHistory({
   type: "point" | "coupon" | "gifts";
   data: any | null;
 }) {
-  const [coupons, setCoupons] = useState<any[]>([]);
-  const { openOverlay } = useOverlay();
+  const [coupons, setCoupons] = useState<UserVouchersList["list"]["availed"]>(
+    []
+  );
+  const [addList, setAddList] = useState<boolean>(false);
+
   const title =
     type === "point"
       ? "포인트 상세 내역"
@@ -25,12 +34,10 @@ export default function MyHistory({
         : "나의 구매권";
 
   useEffect(() => {
-    if (type === "coupon" && data && data.list && data.list.availed) {
+    if (data && data.list && Array.isArray(data.list.availed)) {
       setCoupons(data.list.availed);
     }
-  }, [type, data]);
-
-  console.log(coupons);
+  }, [data]);
 
   const contents = () => {
     switch (type) {
@@ -92,59 +99,64 @@ export default function MyHistory({
         break;
       case "coupon":
         if (data && data.list) {
-          const handleCouponAdd = (newCoupon: any) => {
-            setCoupons((prevCoupons) => [...prevCoupons, newCoupon]);
-          };
           return (
             <HistoryTab
               list={[
                 {
                   label: "이용 가능",
                   values: "available",
-                  contents:
-                    data.list.availed && data.list.availed.length > 0 ? (
-                      data.list.availed
-                        .filter(
-                          (
-                            couponList: UserVouchersList["list"]["availed"][number]
-                          ) =>
-                            couponList.useDate === null && couponList.isActive
-                        )
-                        .map(
-                          (
-                            couponList: UserVouchersList["list"]["availed"][number],
-                            idx: number
-                          ) => {
-                            return (
-                              <Flex
-                                key={idx}
-                                width={"100%"}
-                                direction="column"
-                                gap={{ row: 8 }}
-                                className="border border-primary-100 bg-white rounded-[12px] shadow-key py-[8px] px-[12px]"
-                              >
-                                <p className="text-p2R">{couponList.code}</p>
+                  contents: (
+                    <>
+                      {addList === true ? (
+                        <MobileSendVouchers
+                          setCoupons={setCoupons}
+                          setAddList={setAddList}
+                        />
+                      ) : (
+                        <Flex
+                          width={"100%"}
+                          direction="column"
+                          items="center"
+                          justify="center"
+                          gap={{ row: 8 }}
+                          onClick={() => setAddList(true)}
+                          className="border border-dashed border-primary-300 rounded-[8px] h-[88px] px-[12px]"
+                        >
+                          <PlusCircleFill
+                            size={24}
+                            className={`fill-primary-300 animate-bounce`}
+                          />
+                          <span className="text-p2B text-primary-300">
+                            바우처 등록하기
+                          </span>
+                        </Flex>
+                      )}
 
-                                <p className="ml-auto text-span2B text-state-R">
-                                  {couponList.expiration}
-                                </p>
-                              </Flex>
-                            );
-                          }
-                        )
-                    ) : (
-                      <AvailableNodata
-                        onClick={() =>
-                          openOverlay(
-                            <MobileSendVouchers
-                              title="쿠폰 등록"
-                              data={coupons}
-                              onCoupon={handleCouponAdd}
-                            />
-                          )
-                        }
-                      />
-                    ),
+                      <Flex
+                        width={"100%"}
+                        direction="column"
+                        gap={{ row: 16 }}
+                        className="overflow-y-auto max-h-[calc(100vh-245px)]"
+                      >
+                        {coupons.map((couponList) => {
+                          return (
+                            <Flex
+                              key={couponList.id}
+                              width={"100%"}
+                              direction="column"
+                              gap={{ row: 8 }}
+                              className="border border-primary-100 bg-white rounded-[12px] shadow-key py-[8px] px-[12px]"
+                            >
+                              <p className="text-p2R">{couponList.code}</p>
+                              <p className="ml-auto text-span2B text-state-R">
+                                {couponList.expiration}
+                              </p>
+                            </Flex>
+                          );
+                        })}
+                      </Flex>
+                    </>
+                  ),
                 },
                 {
                   label: "지난 내역",

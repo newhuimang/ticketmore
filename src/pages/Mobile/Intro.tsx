@@ -73,6 +73,7 @@ export default function MobileIntro() {
           <MobileTimeline />
         </Root>
         <MobileFooter />
+        <div className="h-[80px]" />
       </Flex>
     </>
   );

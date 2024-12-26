@@ -239,6 +239,7 @@ export default function MobileMy({}: {}) {
         </Flex>
 
         <MobileFooter />
+        <div className="h-[80px]" />
       </Flex>
     </>
   );

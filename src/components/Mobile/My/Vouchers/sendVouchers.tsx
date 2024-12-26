@@ -1,120 +1,145 @@
 import * as Yup from "yup";
-import { Formik, Form } from "formik";
-import Input from "@/components/Form/Input";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+
 import Button from "@/components/Button";
 import Flex from "@/components/Flex";
-import Overlay from "@/components/Mobile/Overlay";
-import useOverlay from "@/store/useOverlay";
-import useFeedback from "@/store/useFeedback";
+
+import { UserVouchersList } from "@/type/type";
 
 export default function MobileSendVouchers({
-  title,
-  data,
-  onCoupon,
+  setCoupons,
+  setAddList,
 }: {
-  title: string;
-  data?: any;
-  onCoupon: (newCoupon: any) => void;
-}) {
-  const { closeOverlay } = useOverlay();
-  const feedback = useFeedback();
+  setCoupons: React.Dispatch<
+    React.SetStateAction<UserVouchersList["list"]["availed"]>
+  >;
 
+  setAddList: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const validationSchema = Yup.object({
     voucherCode: Yup.string()
       .required("필수입니다.")
-      .matches(/^[a-zA-Z0-9]{16}$/, "영문, 숫자 포함 16자를 입력하세요."),
+      .matches(
+        /^[a-zA-Z0-9]{16}$/,
+        "한글 제외. 영문, 숫자 포함 4자씩 총 16자를 입력하세요."
+      ),
   });
 
   return (
-    <Overlay>
-      <Formik
-        initialValues={{ voucherCode: "" }}
-        validationSchema={validationSchema}
-        onSubmit={async (values, { setFieldError }) => {
-          const { voucherCode } = values;
-          if (voucherCode) {
-            const newCoupon = {
-              id: "V00241115",
-              code: voucherCode,
-              expiration: "2025-03-21",
-              useDate: null,
-              isActive: true,
-            };
+    <Formik
+      initialValues={{
+        voucherCode1: "",
+        voucherCode2: "",
+        voucherCode3: "",
+        voucherCode4: "",
+        voucherCode: "",
+      }}
+      validationSchema={validationSchema}
+      onSubmit={(values) => {
+        const concatenatedCode = `${values.voucherCode1}${values.voucherCode2}${values.voucherCode3}${values.voucherCode4}`;
 
-            onCoupon(newCoupon);
-
-            console.log(data);
-            feedback.toast({
-              text: "쿠폰 등록이 완료되었습니다.",
-            });
-            closeOverlay();
-          } else {
-            setFieldError("voucherCode", "코드를 확인해주세요.");
-          }
-        }}
-      >
-        {({ isSubmitting, isValid, dirty }) => {
-          return (
-            <Form className="w-full h-[100%]">
-              <Overlay.Head title={title} />
-              <Overlay.Body>
-                <Flex
-                  width={"100%"}
-                  direction="column"
-                  justify="between"
-                  gap={{ row: 16 }}
-                  className="px-[12px] pt-[12px] h-[100%]"
-                >
-                  <Flex width={"100%"} gap={{ column: 8 }}>
-                    <Input
-                      size={40}
-                      name={"voucherCode"}
-                      type="text"
-                      placeholder="xxxx"
-                    />
-                  </Flex>
-                  <Flex
-                    width={"100%"}
-                    direction="column"
-                    gap={{ row: 8 }}
-                    className="bg-base-A rounded-[12px] p-[12px]"
-                  >
-                    <p className="text-span1R text-dark-300">
-                      &#8251; 바우처 등록은 종류별로 계정당 1회만 등록 및 사용이
-                      가능합니다
-                    </p>
-                    <p className="text-span1R text-dark-300">
-                      &#8251; 등록된 바우처는 취소나 환불이 불가능하며 다른
-                      계정에 재등록 및 선물이 불가합니다.
-                    </p>
-                    <p className="text-span1R text-dark-300">
-                      &#8251; 바우처는 사용 후 자동 소멸됩니다.
-                    </p>
-                    <p className="text-span1R text-dark-300">
-                      &#8251; 모든 바우처에는 유효 기간이 있으며, 기간 만료
-                      시에는 사용하실 수 없습니다.
-                    </p>
-                    <p className="text-span1R text-dark-300">
-                      &#8251; 바우처에에 따라 사용 가능 여부가 다르니 확인 후
-                      사용하시기 바랍니다.
-                    </p>
-                  </Flex>
-                </Flex>
-              </Overlay.Body>
-              <Overlay.Control>
-                <Button
-                  type="submit"
-                  label="등록"
-                  bgColor="PRIMARY_900"
-                  font="p2B"
-                  size={60}
-                  disabled={isSubmitting || !isValid || !dirty}
-                />
-              </Overlay.Control>
-            </Form>
-          );
-        }}
-      </Formik>
-    </Overlay>
+        const newCoupon = {
+          id: `V${Date.now()}`,
+          code: concatenatedCode,
+          expiration: "2025-03-21",
+          useDate: null,
+          isActive: true,
+        };
+        setCoupons((prevCoupons) => [...prevCoupons, newCoupon]);
+        setAddList(false);
+      }}
+    >
+      {({ setFieldValue, values }) => (
+        <Form className="w-full relative">
+          <Flex width={"100%"} gap={{ column: 8 }}>
+            <Field
+              name="voucherCode1"
+              type="text"
+              maxLength={4}
+              placeholder="xxxx"
+              className="focus:outline-none w-1/2 border-[1.5px] border-primary-300 rounded-[8px] px-[12px] h-[40px]"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setFieldValue(
+                  "voucherCode",
+                  `${e.target.value}${values.voucherCode2}${values.voucherCode3}${values.voucherCode4}`
+                );
+                setFieldValue("voucherCode1", e.target.value);
+              }}
+            />
+            <Field
+              name="voucherCode2"
+              type="text"
+              maxLength={4}
+              placeholder="xxxx"
+              className="focus:outline-none w-1/2 border-[1.5px] border-primary-300 rounded-[8px] px-[12px] h-[40px]"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setFieldValue(
+                  "voucherCode",
+                  `${values.voucherCode1}${e.target.value}${values.voucherCode3}${values.voucherCode4}`
+                );
+                setFieldValue("voucherCode2", e.target.value);
+              }}
+            />
+            <Field
+              name="voucherCode3"
+              type="text"
+              maxLength={4}
+              placeholder="xxxx"
+              className="focus:outline-none w-1/2 border-[1.5px] border-primary-300 rounded-[8px] px-[12px] h-[40px]"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setFieldValue(
+                  "voucherCode",
+                  `${values.voucherCode1}${values.voucherCode2}${e.target.value}${values.voucherCode4}`
+                );
+                setFieldValue("voucherCode3", e.target.value);
+              }}
+            />
+            <Field
+              name="voucherCode4"
+              type="text"
+              maxLength={4}
+              placeholder="xxxx"
+              className="focus:outline-none w-1/2 border-[1.5px] border-primary-300 rounded-[8px] px-[12px] h-[40px]"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setFieldValue(
+                  "voucherCode",
+                  `${values.voucherCode1}${values.voucherCode2}${values.voucherCode3}${e.target.value}`
+                );
+                setFieldValue("voucherCode4", e.target.value);
+              }}
+            />
+          </Flex>
+          <Flex className="absolute left-0 top-1/2 translate-y-[-50%]">
+            <Field
+              name="voucherCode"
+              type="text"
+              value={values.voucherCode}
+              className="hidden"
+            />
+            <ErrorMessage
+              name="voucherCode"
+              component="span"
+              className="text-state-R text-span1R mt-4 ml-1"
+            />
+          </Flex>
+          <Flex
+            width={"30vw"}
+            gap={{ column: 8 }}
+            className="ml-auto mt-[16px]"
+          >
+            <Button
+              label="닫기"
+              bgColor="BASE_B"
+              font="p2B"
+              type="button"
+              textColor="DARK_300"
+              size={32}
+              onClick={() => setAddList(false)}
+            />
+            <Button label="등록" size={32} font="p2B" type="submit" />
+          </Flex>
+        </Form>
+      )}
+    </Formik>
   );
 }

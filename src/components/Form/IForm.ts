@@ -3,6 +3,7 @@ interface InputProps {
   label?: string;
   name: string;
   value?: any;
+  maxLength?: number;
   placeholder?: string;
   size?: 24 | 32 | 40 | 52 | 60;
   className?: string;

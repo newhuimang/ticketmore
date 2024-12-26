@@ -55,11 +55,7 @@ export default function MobileRecentSearch() {
                 label={<XLg size={14} className="fill-dark-300" />}
                 onClick={(e) => {
                   e.stopPropagation();
-                  alert({
-                    state: "error",
-                    text: "삭제 하시겠습니까?",
-                    handleOk: () => removeSearch(item),
-                  });
+                  removeSearch(item);
                 }}
               />
             </Flex>

@@ -75,123 +75,110 @@ export default function MobileSearchResult() {
         <div className="px-[12px] w-full">
           <MobileSearchbar />
         </div>
-        <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
-          {filteredData.length === 0 ? (
-            <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
-              <Flex
-                width={"100%"}
-                direction="column"
-                items="center"
-                justify="center"
-                gap={{ row: 8 }}
-                className="px-[12px] rounded-[12px] py-[64px]"
-              >
-                <ExclamationCircleFill size={24} className="fill-dark-100" />
-                <p className="text-dark text-center text-p2R">"{result}"</p>
-                <p className="text-p1R text-dark-300">
-                  에 대한 검색결과가 없습니다,
-                </p>
-              </Flex>
-              <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
-                <div className="text-p1B pl-[12px]">이런 상품은 어떠세요?</div>
-                <MobilePromotion />
-              </Flex>
+        {filteredData.length === 0 ? (
+          <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
+            <Flex
+              width={"100%"}
+              direction="column"
+              items="center"
+              justify="center"
+              gap={{ row: 8 }}
+              className="px-[12px] rounded-[12px] py-[64px]"
+            >
+              <ExclamationCircleFill size={24} className="fill-dark-100" />
+              <p className="text-dark text-center text-p2R">"{result}"</p>
+              <p className="text-p1R text-dark-300">
+                에 대한 검색결과가 없습니다,
+              </p>
             </Flex>
-          ) : (
-            <>
-              <Flex width={"100%"} direction="column" className="p-[12px]">
-                <Flex width={"100%"} items="end" gap={{ column: 4 }}>
-                  <span className="text-p1B">티켓</span>
-                  <span className="text-p2R text-state-R">
-                    ({filteredData.length})
-                  </span>
-                </Flex>
-                <Flex
-                  width={"100%"}
-                  direction="column"
-                  gap={{ row: 24 }}
-                  className="pt-[16px]"
-                >
-                  {filteredData.map((item, idx) => {
-                    let statusStyle = "border-primary text-primary";
-                    let statusText = "판매중";
+            <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
+              <div className="text-p1R pl-[12px]">금주의 추천 키워드</div>
+              <MobilePromotion />
+            </Flex>
+          </Flex>
+        ) : (
+          <>
+            <Flex
+              width={"100%"}
+              items="end"
+              gap={{ column: 4 }}
+              className="px-[12px] py-[16px]"
+            >
+              <span className="text-p1B">티켓</span>
+              <span className="text-p2R text-state-R">
+                ({filteredData.length})
+              </span>
+            </Flex>
+            <div className="w-full grid grid-cols-2 gap-x-[8px] gap-y-[24px] px-[12px]">
+              {filteredData.map((item) => {
+                let statusStyle = "border-primary border text-primary";
+                let statusText = "판매중";
 
-                    if (!item.status.open) {
-                      statusStyle = "border-dark text-dark";
-                      statusText = "판매예정";
-                    } else if (item.status.early) {
-                      statusStyle = "border-state-Y text-state-Y";
-                      statusText = "얼리특가";
-                    } else if (item.status.soldOut) {
-                      statusStyle = "border-state-R text-state-R";
-                      statusText = "판매종료";
-                    }
-
-                    return (
-                      <>
-                        <Flex
-                          key={item.id}
-                          width={"100%"}
-                          items="stretch"
-                          gap={{ column: 16 }}
-                        >
-                          <div
-                            className="min-w-[180px] h-[240px] rounded-[8px] bg-cover bg-no-repeat bg-center"
-                            style={{ backgroundImage: `url('${item.image}')` }}
-                          />
-                          <Flex
-                            width={"100%"}
-                            direction="column"
-                            justify="between"
-                            onClick={() => navigate(`/event?con=${item.id}`)}
-                            className="h-5/6 my-auto"
-                          >
-                            <Flex
-                              width={"100%"}
-                              direction="column"
-                              gap={{ row: 8 }}
-                            >
-                              <Flex
-                                items="center"
-                                justify="center"
-                                className={`px-[8px] h-[20px] text-span1R rounded-[4px] border ${statusStyle}`}
-                              >
-                                {statusText}
-                              </Flex>
-                              <p className="text-primary-900 text-p1B">
-                                {item.name}
-                              </p>
-                            </Flex>
-
-                            <Flex width={"100%"} direction="column">
-                              <p className="text-p2R">{item.event.venue}</p>
-                              <p className="text-p2R">{item.organizer}</p>
-                            </Flex>
-
-                            <Flex
-                              gap={{ column: 8 }}
-                              className="text-p2R text-dark-300"
-                            >
-                              {item.event.startDate} ~{" "}
-                              {item.event.endDate === "9999.12.31"
-                                ? ""
-                                : item.event.endDate}
-                            </Flex>
-                          </Flex>
+                if (!item.status.open) {
+                  statusStyle = "bg-dark-300 text-white";
+                  statusText = "판매예정";
+                } else if (item.status.early) {
+                  statusStyle = "bg-state-Y text-white";
+                  statusText = "얼리특가";
+                } else if (item.status.soldOut) {
+                  statusStyle = "bg-state-R text-white";
+                  statusText = "판매종료";
+                }
+                return (
+                  <Flex
+                    key={item.id}
+                    direction="column"
+                    gap={{ row: 8 }}
+                    className="col-span-1"
+                    onClick={() => navigate(`/event?con=${item.id}`)}
+                  >
+                    <div
+                      className="w-full bg-no-repeat bg-cover bg-center h-0 pt-[137%] rounded-[8px]"
+                      style={{ backgroundImage: `url('${item.image}')` }}
+                    />
+                    <Flex width={"100%"} direction="column" gap={{ row: 4 }}>
+                      <p className="w-full truncate text-p1B text-primary-900 px-[2px]">
+                        {item.name}
+                      </p>
+                      <Flex
+                        items="center"
+                        justify="center"
+                        className={`px-[8px] h-[20px] text-span1R rounded-[4px] ${statusStyle}`}
+                      >
+                        {statusText}
+                      </Flex>
+                      <Flex
+                        width={"100%"}
+                        direction="column"
+                        className="px-[2px]"
+                      >
+                        <p className="text-span1R w-full truncate">
+                          {item.event.venue}
+                        </p>
+                        <Flex items="end" gap={{ column: 2 }}>
+                          <span className="text-span1R text-dark-300">
+                            {item.event.startDate}
+                          </span>
+                          <span className="text-span1R text-dark-300">~</span>
+                          <span className="text-span1R text-dark-300">
+                            {item.event.endDate === "9999.12.31"
+                              ? ""
+                              : item.event.endDate}
+                          </span>
                         </Flex>
-
-                        {filteredData.length - 1 > idx && <Divider />}
-                      </>
-                    );
-                  })}
-                </Flex>
-              </Flex>
-            </>
-          )}
-        </Flex>
+                      </Flex>
+                    </Flex>
+                  </Flex>
+                );
+              })}
+            </div>
+          </>
+        )}
       </Flex>
-
-      <MobileFooter />
+      <Flex width={"100%"} direction="column" className="pt-[32px]">
+        <Divider />
+        <MobileFooter />
+      </Flex>
     </>
   );
 }

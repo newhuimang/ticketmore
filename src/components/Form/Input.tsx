@@ -6,6 +6,7 @@ export default function Input({
   label,
   name,
   value,
+  maxLength,
   type,
   placeholder,
   size = 52,
@@ -38,6 +39,7 @@ export default function Input({
           name={name}
           type={type}
           value={value}
+          maxLength={maxLength && maxLength}
           placeholder={placeholder}
           className={`w-full border-none focus:outline-none text-p1R placeholder:text-p1R ${className}`}
         />
