@@ -56,7 +56,12 @@ export default function MobileWeeklyRank() {
       <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
         {data.slice(0, 3).map((item, index) => {
           return (
-            <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
+            <Flex
+              key={index}
+              width={"100%"}
+              direction="column"
+              gap={{ row: 16 }}
+            >
               <Flex key={item.id} width={"100%"} gap={{ column: 8 }}>
                 {/* 썸네일 */}
                 <div

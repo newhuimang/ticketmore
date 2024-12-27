@@ -1,5 +1,4 @@
 interface FlexProps {
-  key?: string | number | null;
   width?: string | number;
   direction?: "column" | "row";
   justify?: "start" | "end" | "center" | "between" | "around" | "evenly";
@@ -17,7 +16,6 @@ interface FlexProps {
 }
 
 export default function Flex({
-  key = null,
   width,
   direction,
   justify = "start",
@@ -31,7 +29,8 @@ export default function Flex({
   onMouseLeave,
 }: FlexProps) {
   const styles: React.CSSProperties = {
-    width: typeof width === "string" || typeof width === "number" ? width : "auto",
+    width:
+      typeof width === "string" || typeof width === "number" ? width : "auto",
     display: "flex",
     flexDirection: direction,
     justifyContent: {
@@ -56,7 +55,7 @@ export default function Flex({
 
   return (
     <div
-      key={key}
+      // key={key}
       className={`${className} box-border`}
       style={styles}
       onClick={onClick}

@@ -107,13 +107,13 @@ export default function MobileTimeline() {
       <div className="w-full relative">
         {data.map((items) => (
           <div key={items.id} className="w-full">
-            {Object.keys(items.time).map((timeKey) => {
+            {Object.keys(items.time).map((timeKey, idx) => {
               const timeSlot = items.time[timeKey];
               const displayTime =
                 timeKey === "1" ? "10:00" : timeKey === "2" ? "14:00" : "err";
               return (
                 timeSlot.events.length !== 0 && (
-                  <Flex width={"100%"} direction="column">
+                  <Flex key={idx} width={"100%"} direction="column">
                     {/* 타임라벨 */}
                     <Flex items="center" gap={{ column: 8 }} key={timeKey}>
                       <Dot size={5} bgColor="DARK" />
