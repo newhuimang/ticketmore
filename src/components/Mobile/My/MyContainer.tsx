@@ -1,6 +1,7 @@
 import Divider from "@/components/Divider";
 import Flex from "@/components/Flex";
 import { ChevronRight } from "react-bootstrap-icons";
+import { Fragment } from "react/jsx-runtime";
 
 interface Container {
   label: string;
@@ -28,7 +29,7 @@ export default function MobileMyContainer({ list, label }: Container) {
       >
         {list.map((item, index) => {
           return (
-            <>
+            <Fragment key={index}>
               <Flex
                 width={"100%"}
                 key={item.id}
@@ -46,7 +47,7 @@ export default function MobileMyContainer({ list, label }: Container) {
               </Flex>
 
               {index < list.length - 1 && <Divider color="bg-base-A" />}
-            </>
+            </Fragment>
           );
         })}
       </Flex>

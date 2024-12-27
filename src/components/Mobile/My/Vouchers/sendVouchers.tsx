@@ -5,17 +5,23 @@ import Button from "@/components/Button";
 import Flex from "@/components/Flex";
 
 import { UserVouchersList } from "@/type/type";
+import useFeedback from "@/store/useFeedback";
 
 export default function MobileSendVouchers({
+  type,
+  coupons,
   setCoupons,
   setAddList,
 }: {
+  type: "coupon" | "gifts";
+  coupons: UserVouchersList["list"]["availed"];
   setCoupons: React.Dispatch<
     React.SetStateAction<UserVouchersList["list"]["availed"]>
   >;
 
   setAddList: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const feedback = useFeedback();
   const validationSchema = Yup.object({
     voucherCode: Yup.string()
       .required("필수입니다.")
@@ -39,18 +45,36 @@ export default function MobileSendVouchers({
         const concatenatedCode = `${values.voucherCode1}${values.voucherCode2}${values.voucherCode3}${values.voucherCode4}`;
 
         const newCoupon = {
-          id: `V${Date.now()}`,
-          code: concatenatedCode,
-          expiration: "2025-03-21",
+          id: `${concatenatedCode}`,
+          name:
+            type === "coupon"
+              ? "연말연시 10% 깜짝 할인 쿠폰"
+              : type === "gifts"
+                ? "뮤지컬 Winter Festa in 대학로"
+                : "err",
+          discountRate: type === "coupon" ? 10 : type === "gifts" ? 100 : 0,
+          createdDate: new Date().toISOString().split("T")[0],
+          expiration: new Date(new Date().setMonth(new Date().getMonth() + 6))
+            .toISOString()
+            .split("T")[0],
           useDate: null,
           isActive: true,
         };
-        setCoupons((prevCoupons) => [...prevCoupons, newCoupon]);
-        setAddList(false);
+        if (
+          coupons.some(
+            (coupon: UserVouchersList["list"]["availed"][number]) =>
+              coupon.id === concatenatedCode
+          )
+        ) {
+          feedback.toast({ text: "이미 등록된 바우처입니다." });
+        } else {
+          setCoupons((prevCoupons) => [...prevCoupons, newCoupon]);
+          setAddList(false);
+        }
       }}
     >
       {({ setFieldValue, values }) => (
-        <Form className="w-full relative">
+        <Form className="w-full relative px-[12px]">
           <Flex width={"100%"} gap={{ column: 8 }}>
             <Field
               name="voucherCode1"
@@ -119,7 +143,7 @@ export default function MobileSendVouchers({
             <ErrorMessage
               name="voucherCode"
               component="span"
-              className="text-state-R text-span1R mt-4 ml-1"
+              className="text-state-R text-span1R mt-4 ml-1 px-[12px]"
             />
           </Flex>
           <Flex

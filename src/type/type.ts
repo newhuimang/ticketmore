@@ -66,14 +66,18 @@ export interface UserVouchersList {
   list: {
     availed: Array<{
       id: string;
-      code: string;
+      name: string;
+      discountRate: number;
+      createdDate: string;
       expiration: string | null;
       useDate: string | null;
       isActive: boolean;
     }>;
     used: Array<{
       id: string;
-      code: string;
+      name: string;
+      discountRate: number;
+      createdDate: string;
       expiration: string | null;
       useDate: string | null;
       isActive: boolean;

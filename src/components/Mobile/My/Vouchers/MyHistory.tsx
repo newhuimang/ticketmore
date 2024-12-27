@@ -8,7 +8,7 @@ import Flex from "@/components/Flex";
 import Divider from "@/components/Divider";
 
 import { Points, UserVouchersList } from "@/type/type";
-import { formatNumberWithComma } from "./Utils";
+import { formatNumberWithComma, getMaskingValues } from "./Utils";
 
 import { PlusCircleFill } from "react-bootstrap-icons";
 
@@ -47,7 +47,7 @@ export default function MyHistory({
                 width={"100%"}
                 direction="column"
                 gap={{ row: 16 }}
-                className="h-[100%]"
+                className="h-[100%] px-[12px]"
               >
                 {/* 이벤트 포인트 */}
 
@@ -96,21 +96,23 @@ export default function MyHistory({
         }
         break;
       case "coupon":
-        if (data && data.list) {
-          return (
-            <HistoryTab
-              list={[
-                {
-                  label: "이용 가능",
-                  values: "available",
-                  contents: (
-                    <>
-                      {addList === true ? (
-                        <MobileSendVouchers
-                          setCoupons={setCoupons}
-                          setAddList={setAddList}
-                        />
-                      ) : (
+        return (
+          <HistoryTab
+            list={[
+              {
+                label: "이용 가능",
+                values: "available",
+                contents: (
+                  <>
+                    {addList === true ? (
+                      <MobileSendVouchers
+                        type={type}
+                        coupons={coupons}
+                        setCoupons={setCoupons}
+                        setAddList={setAddList}
+                      />
+                    ) : (
+                      <Flex width={"100%"} className="px-[12px]">
                         <Flex
                           width={"100%"}
                           direction="column"
@@ -118,7 +120,7 @@ export default function MyHistory({
                           justify="center"
                           gap={{ row: 8 }}
                           onClick={() => setAddList(true)}
-                          className="border border-dashed border-primary-300 rounded-[8px] h-[88px] px-[12px]"
+                          className="border border-dashed border-primary-300 rounded-[8px] h-[88px]"
                         >
                           <PlusCircleFill
                             size={24}
@@ -128,87 +130,176 @@ export default function MyHistory({
                             바우처 등록하기
                           </span>
                         </Flex>
-                      )}
+                      </Flex>
+                    )}
 
-                      <Flex
-                        width={"100%"}
-                        direction="column"
-                        gap={{ row: 16 }}
-                        className="overflow-y-auto max-h-[calc(100vh-245px)]"
-                      >
-                        {coupons.map((couponList) => {
+                    <Flex
+                      width={"100%"}
+                      direction="column"
+                      gap={{ row: 16 }}
+                      className="overflow-y-auto max-h-[calc(100vh-245px)] px-[12px]"
+                    >
+                      {coupons
+                        .slice()
+                        .reverse()
+                        .map((couponList) => {
                           return (
                             <Flex
                               key={couponList.id}
                               width={"100%"}
-                              direction="column"
+                              items="stretch"
                               gap={{ row: 8 }}
-                              className="border border-primary-100 bg-white rounded-[12px] shadow-key py-[8px] px-[12px]"
+                              className="bg-white rounded-[12px] shadow-key"
                             >
-                              <p className="text-p2R">{couponList.code}</p>
-                              <p className="ml-auto text-span2B text-state-R">
-                                {couponList.expiration}
-                              </p>
+                              <Flex
+                                width={"30%"}
+                                items="center"
+                                justify="center"
+                                className="bg-primary-900 rounded-l-[12px]"
+                              >
+                                <Flex items="end" gap={{ column: 4 }}>
+                                  <span className="text-h2B text-white">
+                                    {couponList.discountRate}
+                                  </span>
+                                  <span className="text-p2R text-white mb-1">
+                                    %
+                                  </span>
+                                </Flex>
+                              </Flex>
+                              <Flex
+                                width={"100%"}
+                                direction="column"
+                                gap={{ row: 8 }}
+                                className="px-[16px] pt-[12px] pb-[8px]"
+                              >
+                                <p className="text-subtitR text-primary-900">
+                                  {couponList.name}
+                                </p>
+                                <Flex gap={{ column: 8 }}>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R text-dark-300">
+                                      쿠폰번호
+                                    </p>
+                                    <p className="text-p2R text-dark-300">
+                                      등록일
+                                    </p>
+                                  </Flex>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R text-dark-300">
+                                      {getMaskingValues(couponList.id)}
+                                    </p>
+                                    <p className="text-p2R text-dark-300">
+                                      {couponList.createdDate}
+                                    </p>
+                                  </Flex>
+                                </Flex>
+                                <p className="ml-auto text-span1B text-state-R">
+                                  ~ {couponList.expiration}
+                                </p>
+                              </Flex>
                             </Flex>
                           );
                         })}
-                      </Flex>
-                    </>
-                  ),
-                },
-                {
-                  label: "지난 내역",
-                  values: "history",
-                  contents:
-                    data.list.used && data.list.used.length > 0 ? (
-                      data.list.used
-                        .filter(
-                          (
-                            couponUseList: UserVouchersList["list"]["used"][number]
-                          ) => couponUseList.isActive === false
-                        )
-                        .map(
-                          (
-                            couponUseList: UserVouchersList["list"]["used"][number],
-                            i: number
-                          ) => {
-                            return (
-                              <>
-                                <Flex
-                                  key={i}
-                                  width={"100%"}
-                                  direction="column"
-                                  gap={{ row: 8 }}
-                                  className="border border-dark-100 bg-white rounded-[12px] shadow-key py-[8px] px-[12px]"
-                                >
-                                  <p className="text-p2R text-dark-300">
-                                    {couponUseList.code}
-                                  </p>
-                                  <Flex gap={{ column: 4 }}>
-                                    <p className="text-span1R text-dark-300">
-                                      사용일 :
+                    </Flex>
+                  </>
+                ),
+              },
+              {
+                label: "지난 내역",
+                values: "history",
+                contents: (
+                  <Flex
+                    width={"100%"}
+                    direction="column"
+                    gap={{ row: 16 }}
+                    className="px-[12px]"
+                  >
+                    {data.list.used && data.list.used.length > 0 ? (
+                      data.list.used.map(
+                        (
+                          couponUseList: UserVouchersList["list"]["used"][number]
+                        ) => {
+                          return (
+                            <Flex
+                              key={couponUseList.id}
+                              width={"100%"}
+                              items="stretch"
+                              gap={{ row: 8 }}
+                              className="bg-white rounded-[12px] shadow-key"
+                            >
+                              <Flex
+                                width={"30%"}
+                                items="center"
+                                justify="center"
+                                className="bg-dark-100 rounded-l-[12px]"
+                              >
+                                <Flex items="end" gap={{ column: 4 }}>
+                                  <span className="text-h2B text-dark-300">
+                                    {couponUseList.discountRate}
+                                  </span>
+                                  <span className="text-p2R text-dark-300 mb-1">
+                                    %
+                                  </span>
+                                </Flex>
+                              </Flex>
+                              <Flex
+                                width={"100%"}
+                                direction="column"
+                                gap={{ row: 8 }}
+                                className="px-[16px] pt-[12px] pb-[8px]"
+                              >
+                                <p className="text-subtitR text-primary-900">
+                                  {couponUseList.name}
+                                </p>
+                                <Flex gap={{ column: 8 }}>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R text-dark-300">
+                                      쿠폰번호
                                     </p>
-                                    <p className="text-span1B text-dark-300">
-                                      {" "}
+                                    <p className="text-p2R text-dark-300">
+                                      등록일
+                                    </p>
+                                    <p className="text-p2R text-dark-300">
+                                      사용일
+                                    </p>
+                                  </Flex>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R">
+                                      {getMaskingValues(couponUseList.id)}
+                                    </p>
+                                    <p className="text-p2R">
+                                      {couponUseList.createdDate}
+                                    </p>
+                                    <p
+                                      className={`text-p2R ${
+                                        couponUseList.isActive === false
+                                          ? "text-state-R"
+                                          : ""
+                                      }`}
+                                    >
                                       {couponUseList.isActive === false
                                         ? "유효기간 만료"
                                         : couponUseList.useDate}
                                     </p>
                                   </Flex>
                                 </Flex>
-                              </>
-                            );
-                          }
-                        )
+                                <p className="ml-auto text-span1R text-dark-300">
+                                  ~ {couponUseList.expiration}
+                                </p>
+                              </Flex>
+                            </Flex>
+                          );
+                        }
+                      )
                     ) : (
                       <HistoryNodata />
-                    ),
-                },
-              ]}
-            />
-          );
-        }
-        break;
+                    )}
+                  </Flex>
+                ),
+              },
+            ]}
+          />
+        );
       case "gifts":
         return (
           <HistoryTab
@@ -216,12 +307,220 @@ export default function MyHistory({
               {
                 label: "이용 가능",
                 values: "available",
-                contents: <></>,
+                contents: (
+                  <>
+                    {addList === true ? (
+                      <MobileSendVouchers
+                        type={type}
+                        coupons={coupons}
+                        setCoupons={setCoupons}
+                        setAddList={setAddList}
+                      />
+                    ) : (
+                      <Flex width={"100%"} className="px-[12px]">
+                        <Flex
+                          width={"100%"}
+                          direction="column"
+                          items="center"
+                          justify="center"
+                          gap={{ row: 8 }}
+                          onClick={() => setAddList(true)}
+                          className="border border-dashed border-primary-300 rounded-[8px] h-[88px]"
+                        >
+                          <PlusCircleFill
+                            size={24}
+                            className={`fill-primary-300 animate-bounce`}
+                          />
+                          <span className="text-p2B text-primary-300">
+                            바우처 등록하기
+                          </span>
+                        </Flex>
+                      </Flex>
+                    )}
+
+                    <Flex
+                      width={"100%"}
+                      direction="column"
+                      gap={{ row: 16 }}
+                      className="overflow-y-auto max-h-[calc(100vh-245px)] px-[12px]"
+                    >
+                      {coupons
+                        .slice()
+                        .reverse()
+                        .map((couponList) => {
+                          return (
+                            <Flex
+                              key={couponList.id}
+                              width={"100%"}
+                              items="stretch"
+                              justify="end"
+                              gap={{ row: 8 }}
+                              className="rounded-[12px]"
+                            >
+                              <div className="w-[50px] bg-primary-900 rounded-l-[12px]" />
+                              <Flex
+                                width={"100%"}
+                                direction="column"
+                                gap={{ row: 8 }}
+                                className="bg-white rounded-r-[12px] pl-[16px] py-[12px]"
+                              >
+                                <p className="text-subtitR text-primary-900">
+                                  {couponList.name}
+                                </p>
+                                <Flex gap={{ column: 8 }}>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R text-dark-300">
+                                      쿠폰번호
+                                    </p>
+                                    <p className="text-p2R text-dark-300">
+                                      등록일
+                                    </p>
+                                  </Flex>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R text-dark-300">
+                                      {getMaskingValues(couponList.id)}
+                                    </p>
+                                    <p className="text-p2R text-dark-300">
+                                      {couponList.createdDate}
+                                    </p>
+                                  </Flex>
+                                </Flex>
+                              </Flex>
+                              <div className="my-[12px] border-l border-dashed border-dark-100" />
+                              <Flex
+                                direction="column"
+                                gap={{ row: 8 }}
+                                className="bg-white [h-100%] px-[16px] py-[16px] rounded-[12px] box-border"
+                              >
+                                <Flex
+                                  width={"100%"}
+                                  direction="column"
+                                  gap={{ row: 4 }}
+                                >
+                                  <div className="w-full h-[2px] bg-dark-600" />
+                                  <div className="w-full h-[1px] bg-dark-400" />
+                                  <div className="w-full h-[3px] bg-dark-800" />
+                                  <div className="w-full h-[6px] bg-dark-200" />
+                                  <div className="w-full h-[2px] bg-dark-100" />
+                                  <div className="w-full h-[3px] bg-dark-500" />
+                                  <div className="w-full h-[1px] bg-dark-500" />
+                                  <div className="w-full h-[2px] bg-dark-300" />
+                                  <div className="w-full h-[1px] bg-dark-400" />
+                                  <div className="w-full h-[3px] bg-dark-800" />
+                                </Flex>
+                                <p className="w-fit ml-auto text-span1B text-state-R text-nowrap">
+                                  ~ {couponList.expiration}
+                                </p>
+                              </Flex>
+                            </Flex>
+                          );
+                        })}
+                    </Flex>
+                  </>
+                ),
               },
               {
                 label: "지난 내역",
                 values: "history",
-                contents: <HistoryNodata />,
+                contents: (
+                  <Flex
+                    width={"100%"}
+                    direction="column"
+                    gap={{ row: 16 }}
+                    className="px-[12px]"
+                  >
+                    {data.list.used && data.list.used.length > 0 ? (
+                      data.list.used.map(
+                        (
+                          couponUseList: UserVouchersList["list"]["used"][number]
+                        ) => {
+                          return (
+                            <Flex
+                              key={couponUseList.id}
+                              width={"100%"}
+                              items="stretch"
+                              justify="end"
+                              gap={{ row: 8 }}
+                              className="rounded-[12px]"
+                            >
+                              <div className="w-[50px] bg-dark-100 rounded-l-[12px]" />
+                              <Flex
+                                width={"100%"}
+                                direction="column"
+                                gap={{ row: 8 }}
+                                className="bg-white rounded-r-[12px] pl-[16px] py-[12px]"
+                              >
+                                <p className="text-subtitR text-primary-900">
+                                  {couponUseList.name}
+                                </p>
+                                <Flex gap={{ column: 8 }}>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R text-dark-300">
+                                      쿠폰번호
+                                    </p>
+                                    <p className="text-p2R text-dark-300">
+                                      등록일
+                                    </p>
+                                    <p className="text-p2R text-dark-300">
+                                      사용일
+                                    </p>
+                                  </Flex>
+                                  <Flex direction="column" gap={{ row: 2 }}>
+                                    <p className="text-p2R">
+                                      {getMaskingValues(couponUseList.id)}
+                                    </p>
+                                    <p className="text-p2R">
+                                      {couponUseList.createdDate}
+                                    </p>
+                                    <p
+                                      className={`text-p2R ${
+                                        couponUseList.isActive === false
+                                          ? "text-state-R"
+                                          : ""
+                                      }`}
+                                    >
+                                      {couponUseList.isActive === false
+                                        ? "유효기간 만료"
+                                        : couponUseList.useDate}
+                                    </p>
+                                  </Flex>
+                                </Flex>
+                              </Flex>
+                              <div className="my-[12px] border-l border-dashed border-dark-100" />
+                              <Flex
+                                direction="column"
+                                gap={{ row: 8 }}
+                                className="bg-white [h-100%] px-[16px] py-[16px] rounded-[12px] box-border"
+                              >
+                                <Flex
+                                  width={"100%"}
+                                  direction="column"
+                                  gap={{ row: 4 }}
+                                >
+                                  <div className="w-full h-[2px] bg-dark-600" />
+                                  <div className="w-full h-[1px] bg-dark-400" />
+                                  <div className="w-full h-[3px] bg-dark-800" />
+                                  <div className="w-full h-[6px] bg-dark-200" />
+                                  <div className="w-full h-[2px] bg-dark-100" />
+                                  <div className="w-full h-[3px] bg-dark-500" />
+                                  <div className="w-full h-[1px] bg-dark-500" />
+                                  <div className="w-full h-[2px] bg-dark-300" />
+                                  <div className="w-full h-[1px] bg-dark-400" />
+                                  <div className="w-full h-[3px] bg-dark-800" />
+                                </Flex>
+                                <p className="w-fit ml-auto text-span1R text-dark-300 text-nowrap">
+                                  ~ {couponUseList.expiration}
+                                </p>
+                              </Flex>
+                            </Flex>
+                          );
+                        }
+                      )
+                    ) : (
+                      <HistoryNodata />
+                    )}
+                  </Flex>
+                ),
               },
             ]}
           />
@@ -237,7 +536,7 @@ export default function MyHistory({
           width={"100%"}
           direction="column"
           gap={{ row: 24 }}
-          className="bg-white px-[12px] pt-[16px]"
+          className="bg-base-A pt-[12px] min-h-[calc(100vh-40.4px)]"
         >
           {contents()}
         </Flex>
@@ -270,6 +569,7 @@ function HistoryTab({ list }: HistoryTabProps) {
             justify="center"
             items="center"
             onClick={() => setHistoryTabActive(tab.values)}
+            className="bg-white"
           >
             <span
               className={`${historyTabActive === tab.values ? "text-p1B text-primary" : "text-p1R"} pb-[4px]`}
@@ -277,9 +577,9 @@ function HistoryTab({ list }: HistoryTabProps) {
               {tab.label}
             </span>
             <div
-              className={`h-[1px] ${
+              className={`h-[2px] ${
                 historyTabActive === tab.values
-                  ? "w-full border-b border-primary-300 transform scale-x-100 mx-auto transition-all duration-300 ease-in-out"
+                  ? "w-full border-b-2 border-primary-300 transform scale-x-100 mx-auto transition-all duration-300 ease-in-out"
                   : "transform scale-x-0 mx-0 transition-all duration-300 ease-in-out"
               }`}
             />

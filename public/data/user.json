@@ -54,9 +54,20 @@
       "availed": [],
       "used": [
         {
-          "id": "C00231120",
-          "code": "BLKFRIDAY10",
-          "expiration": "2024-05-12",
+          "id": "kT1pH7rQ8XA3g2L9",
+          "name": "10% BLKFRIDAY",
+          "discountRate": 10,
+          "createdDate": "2024-10-12",
+          "expiration": "2024-04-12",
+          "useDate": "2024-10-29",
+          "isActive": true
+        },
+        {
+          "id": "A3f7B9kL1jQ2R5pZ8",
+          "name": "TIME ATTACK! 5% 할인",
+          "discountRate": 5,
+          "createdDate": "2024-08-02",
+          "expiration": "2024-08-02",
           "useDate": null,
           "isActive": false
         }
@@ -66,14 +77,26 @@
   "gifts": {
     "totalCount": 1,
     "list": {
-      "availed": [],
+      "availed": [
+        {
+          "id": "A3g2L9kT1pH7rQ8X",
+          "name": "KIA 타이거즈 GOLD 등급 예매권",
+          "discountRate": 100,
+          "createdDate": "2024-10-08",
+          "expiration": "2025-04-08",
+          "useDate": null,
+          "isActive": true
+        }
+      ],
       "used": [
         {
-          "id": "V00241115",
-          "code": "A3gH7r2L9kT1pQ8X",
-          "expiration": "2025-03-21",
-          "useDate": null,
-          "isActive": false
+          "id": "r2LA3gT1pQ8XH79k",
+          "name": "KIA 타이거즈 응원석 초대권",
+          "discountRate": 100,
+          "createdDate": "2024-07-21",
+          "expiration": "2025-01-21",
+          "useDate": "2024-07-23",
+          "isActive": true
         }
       ]
     }
