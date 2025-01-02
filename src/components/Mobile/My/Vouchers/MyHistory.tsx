@@ -42,13 +42,13 @@ export default function MyHistory({
       case "point":
         if (data && data.history && Array.isArray(data.history)) {
           return (
-            <>
-              <Flex
-                width={"100%"}
-                direction="column"
-                gap={{ row: 16 }}
-                className="h-[100%] px-[12px]"
-              >
+            <Flex
+              width={"100%"}
+              direction="column"
+              gap={{ row: 8 }}
+              className="pt-[16px] px-[12px]"
+            >
+              <Flex width={"100%"} direction="column" gap={{ row: 16 }}>
                 {/* 이벤트 포인트 */}
 
                 {data.history.map(
@@ -91,7 +91,7 @@ export default function MyHistory({
               <p className="text-span1R text-dark-300 ml-auto mb-[8px]">
                 *최근 6개월 내역까지 조회 가능합니다
               </p>
-            </>
+            </Flex>
           );
         }
         break;
