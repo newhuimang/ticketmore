@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useOverlay, { useLatestOverlay } from "@/store/useOverlay";
 
 import Flex from "@/components/Flex";
@@ -6,7 +7,6 @@ import MobileNavBar from "../NavBar";
 import { ArrowLeft } from "react-bootstrap-icons";
 
 import { OverlayHeadProps } from "./IOverlay";
-import { useEffect } from "react";
 
 function OverlayHead({
   size = 24,
@@ -41,7 +41,7 @@ function OverlayControl({ children }: { children: React.ReactNode }) {
     <Flex
       width="100%"
       gap={{ column: 8 }}
-      className="absolute bottom-0 bg-white box-border z-9999 p-[12px]"
+      className="fixed bottom-0 bg-white box-border z-50 p-[12px]"
     >
       {children}
     </Flex>
